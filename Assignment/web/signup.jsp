@@ -1,7 +1,9 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login Page</title>
+	<title>Sign Page</title>
 	<!--Bootstrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
@@ -47,132 +49,78 @@
               />
             </div>
             <div class="col-xl-6">
+              <form action="signup" method="post">
               <div class="card-body p-md-5 text-black">
-                <h3 class="mb-5 text-uppercase">Student registration form</h3>
-
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                      <input type="text" id="form3Example1m" class="form-control form-control-lg" name="firstname"/>
                       <label class="form-label" for="form3Example1m">First name</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n">Last name</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1m1">Mother's name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n1">Father's name</label>
+                        <input type="text" id="form3Example1n" class="form-control form-control-lg" name="lastname"/>
+                        <label class="form-label" for="form3Example1n">Last name</label>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example8" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example8">Address</label>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="address"/>
+                    <label class="form-label" for="form3Example8">Address</label>
                 </div>
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-                  <h6 class="mb-0 me-4">Gender: </h6>
-
+                  <h6 class="mb-0 me-4">Gender:   </h6>
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="inlineRadioOptions"
+                      name="gender"
                       id="femaleGender"
-                      value="option1"
+                      value="1"
                     />
-                    <label class="form-check-label" for="femaleGender">Female</label>
+                    <label class="form-check-label" for="femaleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="inlineRadioOptions"
+                      name="gender"
                       id="maleGender"
-                      value="option2"
+                      value="0"
                     />
-                    <label class="form-check-label" for="maleGender">Male</label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="otherGender"
-                      value="option3"
-                    />
-                    <label class="form-check-label" for="otherGender">Other</label>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-
-                    <select class="select">
-                      <option value="1">State</option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
-                    </select>
-
-                  </div>
-                  <div class="col-md-6 mb-4">
-
-                    <select class="select">
-                      <option value="1">City</option>
-                      <option value="2">Option 1</option>
-                      <option value="3">Option 2</option>
-                      <option value="4">Option 3</option>
-                    </select>
-
+                    <label class="form-check-label" for="maleGender">Female</label>
                   </div>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example9" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example9">DOB</label>
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="dob"/>
+                    <label class="form-label" for="form3Example9">DOB</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example90" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example90">Pincode</label>
+                    <input type="text" id="form3Example90" class="form-control form-control-lg" name="phone"/>
+                  <label class="form-label" for="form3Example90">Phone</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example99" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example99">Course</label>
+                    <input type="text" id="form3Example99" class="form-control form-control-lg" name="cid"/>
+                    <label class="form-label" for="form3Example99">ID card</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example97" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example97">Email ID</label>
+                    <input type="text" id="form3Example97" class="form-control form-control-lg" name="email"/>
+                    <label class="form-label" for="form3Example97">Email</label>
                 </div>
-
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="button" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
                 </div>
-
               </div>
+              </form>
             </div>
           </div>
         </div>
