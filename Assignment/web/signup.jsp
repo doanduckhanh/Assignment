@@ -30,8 +30,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.jsp">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.jsp">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.html">Đăng nhập</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,6 +54,17 @@
             <div class="col-xl-6">
               <form action="signup" method="post">
               <div class="card-body p-md-5 text-black">
+                                  
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="username"/>
+                    <label class="form-label" for="form3Example8">Tên đăng nhập (có từ 6 ký tự trở lên)</label>
+                </div>
+                
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="password"/>
+                    <label class="form-label" for="form3Example8">Mật khẩu (có từ 8 đến 12 ký tự)</label>
+                </div>
+                  
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
@@ -73,6 +84,7 @@
                     <input type="text" id="form3Example8" class="form-control form-control-lg" name="address"/>
                     <label class="form-label" for="form3Example8">Địa chỉ</label>
                 </div>
+
                 <select name="calc_shipping_provinces" required="">
                 <option value="">Provinces</option>
                 </select>
@@ -128,7 +140,7 @@
                     <label class="form-label" for="form3Example97">Email</label>
                 </div>
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit</button>
                 </div>
               </div>
               </form>
