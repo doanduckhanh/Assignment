@@ -1,6 +1,5 @@
 USE [master]
 GO
-
 /****** Object:  Database [LibraryDb]    Script Date: 03/01/2022 16:07:24 ******/
 CREATE DATABASE [LibraryDb] ON  PRIMARY 
 ( NAME = N'LibraryDb', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\LibraryDb.mdf' , SIZE = 2304KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
@@ -105,6 +104,25 @@ GO
 USE [LibraryDb]
 GO
 
+/****** Object:  Table [dbo].[Author]    Script Date: 03/01/2022 16:08:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Author](
+	[AuID] [int] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Information] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Author] PRIMARY KEY CLUSTERED 
+(
+	[AuID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
 /****** Object:  Table [dbo].[Categories]    Script Date: 03/01/2022 16:06:52 ******/
 SET ANSI_NULLS ON
 GO
@@ -122,8 +140,52 @@ CREATE TABLE [dbo].[Categories](
 ) ON [PRIMARY]
 
 GO
+/****** Object:  Table [dbo].[Customer]    Script Date: 03/01/2022 16:08:49 ******/
+SET ANSI_NULLS ON
+GO
 
-USE [LibraryDb]
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Customer](
+	[CusID] [nvarchar](50) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Address] [nvarchar](50) NOT NULL,
+	[State] [nvarchar](50) NOT NULL,
+	[City] [nvarchar](50) NOT NULL,
+	[Gender] [bit] NOT NULL,
+	[Birth] [date] NOT NULL,
+	[Phone] [nchar](10) NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[CusID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[Order]    Script Date: 03/01/2022 16:09:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Order](
+	[OrID] [int] NOT NULL,
+	[CusID] [nvarchar](50) NOT NULL,
+	[BookID] [int] NOT NULL,
+	[StartDate] [nvarchar](50) NOT NULL,
+	[EndDate] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
+(
+	[OrID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 
 /****** Object:  Table [dbo].[Book]    Script Date: 03/01/2022 16:06:40 ******/
@@ -161,82 +223,6 @@ REFERENCES [dbo].[Categories] ([CateID])
 GO
 
 ALTER TABLE [dbo].[Book] CHECK CONSTRAINT [FK_Book_Categories]
-GO
-
-USE [LibraryDb]
-GO
-
-/****** Object:  Table [dbo].[Author]    Script Date: 03/01/2022 16:08:28 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Author](
-	[AuID] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Information] [nvarchar](max) NOT NULL,
- CONSTRAINT [PK_Author] PRIMARY KEY CLUSTERED 
-(
-	[AuID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-
-USE [LibraryDb]
-GO
-
-/****** Object:  Table [dbo].[Customer]    Script Date: 03/01/2022 16:08:49 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Customer](
-	[CusID] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Address] [nvarchar](50) NOT NULL,
-	[State] [nvarchar](50) NOT NULL,
-	[City] [nvarchar](50) NOT NULL,
-	[Gender] [bit] NOT NULL,
-	[Birth] [date] NOT NULL,
-	[Phone] [nchar](10) NOT NULL,
-	[Email] [nvarchar](50) NOT NULL,
-	[username] [nvarchar](50) NOT NULL,
-	[password] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
-(
-	[CusID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-USE [LibraryDb]
-GO
-
-/****** Object:  Table [dbo].[Order]    Script Date: 03/01/2022 16:09:23 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Order](
-	[OrID] [int] NOT NULL,
-	[CusID] [int] NOT NULL,
-	[BookID] [int] NOT NULL,
-	[StartDate] [nvarchar](50) NOT NULL,
-	[EndDate] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
-(
-	[OrID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
 GO
 
 ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Book] FOREIGN KEY([BookID])

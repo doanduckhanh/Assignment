@@ -65,21 +65,11 @@
                     <label class="form-label" for="form3Example8">Mật khẩu (có từ 8 đến 12 ký tự)</label>
                 </div>
                   
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" name="firstname"/>
-                      <label class="form-label" for="form3Example1m">Họ</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <input type="text" id="form3Example1n" class="form-control form-control-lg" name="lastname"/>
-                        <label class="form-label" for="form3Example1n">Tên</label>
-                    </div>
-                  </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="fullname"/>
+                    <label class="form-label" for="form3Example8">Họ và tên</label>
                 </div>
-
+                  
                 <div class="form-outline mb-4">
                     <input type="text" id="form3Example8" class="form-control form-control-lg" name="address"/>
                     <label class="form-label" for="form3Example8">Địa chỉ</label>
