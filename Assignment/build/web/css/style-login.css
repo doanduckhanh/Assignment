@@ -130,6 +130,6 @@ margin-left: 4px;
   width: 100%;
 }
 
-body{
-    background-image: url("https://cdn.discordapp.com/attachments/387267441245552642/943430930922606602/thuvien.jpg");
+#role{
+    border-radius: 5px;
 }
