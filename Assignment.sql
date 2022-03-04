@@ -159,6 +159,7 @@ CREATE TABLE [dbo].[Customer](
 	[Email] [nvarchar](50) NOT NULL,
 	[username] [nvarchar](50) NOT NULL,
 	[password] [nvarchar](50) NOT NULL,
+	[role] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
 (
 	[CusID] ASC
