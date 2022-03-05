@@ -155,7 +155,7 @@ CREATE TABLE [dbo].[Customer](
 	[City] [nvarchar](50) NOT NULL,
 	[Gender] [bit] NOT NULL,
 	[Birth] [date] NOT NULL,
-	[Phone] [nchar](10) NOT NULL,
+	[Phone] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[username] [nvarchar](50) NOT NULL,
 	[password] [nvarchar](50) NOT NULL,

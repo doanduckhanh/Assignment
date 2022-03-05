@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Customer;
@@ -40,9 +41,53 @@ public class CustomerDAO extends BaseDAO<Customer>{
                  cus.setPassword(rs.getString("password"));
                  return cus;
              }
-        } catch (Exception e) {
+        } catch (SQLException e) {
              Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
          return null;
+    }
+    
+    public void insertCus(Customer c){
+        try {
+            String sql = "INSERT INTO [Customer]\n"
+                    + "([CusID]\n"
+                    + ",[Name]\n"
+                    + ",[Address]\n"
+                    + ",[State]\n"
+                    + ",[City]\n"
+                    + ", [Gender]\n"
+                    + ", [Birth]\n"
+                    + ", [Phone]\n"
+                    + ", [Email]\n"
+                    + ", [username]\n"
+                    + ", [password])\n"
+                    + "VALUES\n"
+                    + "(?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?\n"
+                    + ",?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, c.getCusID());
+            statement.setString(2, c.getName());
+            statement.setString(3, c.getAddress());
+            statement.setString(4, c.getState());
+            statement.setString(5, c.getCity());
+            statement.setBoolean(6, c.isGender());
+            statement.setDate(7, c.getDob());
+            statement.setString(8, c.getPhone());
+            statement.setString(9, c.getEmail());
+            statement.setString(10, c.getUsername());
+            statement.setString(11, c.getPassword());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }
