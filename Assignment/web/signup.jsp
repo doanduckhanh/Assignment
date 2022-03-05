@@ -31,14 +31,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.jsp">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.html">Đăng nhập</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.jsp">Đăng nhập</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     <!-- Signup Form -->
     <section class="h-100 bg-dark">
-  <div class="container py-5 h-100">
+    <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
         <div class="card card-registration my-4">
@@ -51,6 +51,7 @@
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
               />
             </div>
+              <!-- Form -->
             <div class="col-xl-6">
               <form action="signup" method="post">
               <div class="card-body p-md-5 text-black">
@@ -81,8 +82,8 @@
                 <select name="calc_shipping_district" required="">
                 <option value="">District</option>
                 </select>
-                <input class="billing_address_1" name="state" type="hidden" value="">
-                <input class="billing_address_2" name="city" type="hidden" value="">
+                <input class="billing_address_1" name="city" type="hidden" value="">
+                <input class="billing_address_2" name="state" type="hidden" value="">
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
                   <h6 class="mb-0 me-4">Giới tính </h6>
@@ -139,7 +140,7 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </section>
 
 <script>//<![CDATA[

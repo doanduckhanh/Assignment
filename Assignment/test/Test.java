@@ -28,11 +28,11 @@ public class Test {
             // crate statement
             Statement stmt = conn.createStatement();
             // get data from table 'student'
-            ResultSet rs = stmt.executeQuery("select * from book");
+            ResultSet rs = stmt.executeQuery("select c.Name,c.Address,c.State,c.City from Customer c");
             // show data
             while (rs.next()) {
-                System.out.println(rs.getInt(1) + "  " + rs.getString(2) 
-                        + "  " + rs.getString(3));
+                System.out.println(rs.getString(1) + "  " + rs.getString(2) 
+                        + "  " + rs.getString(3) + " "+rs.getString(4));
             }
             // close connection
             conn.close();

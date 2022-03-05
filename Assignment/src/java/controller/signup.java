@@ -12,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Customer;
+import DAL.CustomerDAO;
+import java.sql.Date;
 /**
  *
  * @author khanh doan
@@ -72,7 +74,38 @@ public class signup extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String name = request.getParameter("fullname");
+        String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String gender = request.getParameter("gender");
+        String dob = request.getParameter("dob");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String cid = request.getParameter("cid");
+        
+        Customer c = new Customer();
+        CustomerDAO db = new CustomerDAO();
+        c.setUsername(username);
+        c.setPassword(password);
+        c.setAddress(address);
+        c.setCity(city);
+        c.setState(state);
+        c.setCusID(cid);
+        c.setDob(Date.valueOf(dob));
+        c.setEmail(email);
+        c.setName(name);
+        c.setPhone(phone);
+        if(gender.equals("1")){
+            c.setGender(true);
+        } else {
+            c.setGender(false);
+        }
+        db.insertCus(c);
+        response.sendRedirect("login.html");
     }
 
     /**

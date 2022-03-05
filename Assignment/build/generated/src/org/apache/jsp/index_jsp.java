@@ -48,7 +48,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n");
       out.write("        <meta name=\"description\" content=\"\" />\n");
       out.write("        <meta name=\"author\" content=\"\" />\n");
-      out.write("        <title>Small Business - Start Bootstrap Template</title>\n");
+      out.write("        <title>Library Publication</title>\n");
       out.write("        <!-- Favicon-->\n");
       out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"assets/favicon.ico\" />\n");
       out.write("        <!-- Core theme CSS (includes Bootstrap)-->\n");
@@ -71,7 +71,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n");
       out.write("                    <ul class=\"navbar-nav ms-auto mb-2 mb-lg-0\">\n");
       out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a></li>\n");
-      out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"login.html\">Login</a></li>\n");
+      out.write("                        <li class=\"nav-item dropdown\">\n");
+      out.write("                            <a class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-expanded=\"false\">Categories</a>\n");
+      out.write("                            <ul class=\"dropdown-menu\">\n");
+      out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n");
+      out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n");
+      out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n");
+      out.write("                                <li><hr class=\"dropdown-divider\"></li>\n");
+      out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Separated link</a></li>\n");
+      out.write("                            </ul>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"Login\">Login</a></li>\n");
       out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
@@ -106,7 +116,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <!-- Content Row-->\n");
       out.write("            <div id=\"categories\" class=\"row gx-4 gx-lg-5\">\n");
       out.write("                <div class=\"col-md-8 mb-5\">\n");
-      out.write("                    <h2>Book Categories</h2>                   \n");
+      out.write("                    <h2>New Books</h2>                   \n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");

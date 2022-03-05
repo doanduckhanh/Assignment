@@ -28,6 +28,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.jsp">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categories</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="Login">Login</a></li>
                     </ul>
                 </div>
@@ -63,7 +71,7 @@
             <!-- Content Row-->
             <div id="categories" class="row gx-4 gx-lg-5">
                 <div class="col-md-8 mb-5">
-                    <h2>Book Categories</h2>                   
+                    <h2>New Books</h2>                   
                 </div>
             </div>
         </div>

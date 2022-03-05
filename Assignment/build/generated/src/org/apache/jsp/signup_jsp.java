@@ -94,6 +94,7 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                style=\"border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;\"\n");
       out.write("              />\n");
       out.write("            </div>\n");
+      out.write("              <!-- Form -->\n");
       out.write("            <div class=\"col-xl-6\">\n");
       out.write("              <form action=\"signup\" method=\"post\">\n");
       out.write("              <div class=\"card-body p-md-5 text-black\">\n");
@@ -124,8 +125,8 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <select name=\"calc_shipping_district\" required=\"\">\n");
       out.write("                <option value=\"\">District</option>\n");
       out.write("                </select>\n");
-      out.write("                <input class=\"billing_address_1\" name=\"state\" type=\"hidden\" value=\"\">\n");
-      out.write("                <input class=\"billing_address_2\" name=\"city\" type=\"hidden\" value=\"\">\n");
+      out.write("                <input class=\"billing_address_1\" name=\"city\" type=\"hidden\" value=\"\">\n");
+      out.write("                <input class=\"billing_address_2\" name=\"state\" type=\"hidden\" value=\"\">\n");
       out.write("                <div class=\"d-md-flex justify-content-start align-items-center mb-4 py-2\">\n");
       out.write("\n");
       out.write("                  <h6 class=\"mb-0 me-4\">Giới tính </h6>\n");
