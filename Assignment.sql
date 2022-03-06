@@ -204,6 +204,7 @@ CREATE TABLE [dbo].[Book](
 	[Number] [int] NULL,
 	[EntryDate] [date] NOT NULL,
 	[Price] [int] NOT NULL,
+	[Image] [image] NOT NULL,
  CONSTRAINT [PK_Book] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
