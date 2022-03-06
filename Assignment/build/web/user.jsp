@@ -56,19 +56,24 @@
             </form>
         </div>
         <div class="row g-0">
-            <div class="col-6 col-md-2" id="categories">
+            <div class="col-md-2" id="categories">
                 <h3>Categories</h3>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                </ul>               
+                <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">The current link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                </div>
             </div>
-            <div class="col-sm-6 col-md-10">
-                <table>
-                    
+            <div class="col-md-10">
+                <table border = "1px solid black">
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Status</td>
+                    </tr>
                 </table>
             </div>          
         </div>
