@@ -21,9 +21,10 @@ import java.util.logging.Logger;
 public class CustomerDAO extends BaseDAO<Customer>{
     public Customer getCusByUsernameAndPassword(String username, String password) throws SQLException{
          try {
-            String sql = "SELECT c.CusID,c.Name,c.Address,c.State,c.City,c.Gender,c.Birth,c.Phone,c.Email,c.username,c.password FROM Customer c\n"+"WHERE c.username = ?";
+            String sql = "SELECT c.CusID,c.Name,c.Address,c.State,c.City,c.Gender,c.Birth,c.Phone,c.Email,c.username,c.password FROM Customer c\n"+"WHERE c.username = ? AND c.password = ?";
              PreparedStatement statement = connection.prepareStatement(sql);
              statement.setString(1, username);
+             statement.setString(2, password);
              ResultSet rs = statement.executeQuery();
              if(rs.next()){
                  Customer cus = new Customer();

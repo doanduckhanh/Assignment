@@ -44,6 +44,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -60,7 +61,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>\n");
       out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>\n");
       out.write("    </head>\n");
-      out.write("    <body style=\"background-image: url(Img\\login.jpg)\">\n");
+      out.write("    <body style=\"background-image: url(Img/login.jpg)\">\n");
+      out.write("        ");
+
+            String username = (String)request.getAttribute("username");
+            String password = (String)request.getAttribute("password");
+        
+      out.write("\n");
       out.write("        <!-- Responsive navbar-->\n");
       out.write("        <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n");
       out.write("            <div class=\"container px-5\">\n");
@@ -85,12 +92,28 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t<h3>Log In</h3>\n");
       out.write("\t\t\t</div>\n");
       out.write("\t\t\t<div class=\"card-body\">\n");
-      out.write("\t\t\t\t<form>\n");
+      out.write("                            ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.err==1?\"Failed to username or password\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" <br/>\n");
+      out.write("                                <form action=\"Login\" method=\"post\">\n");
       out.write("\t\t\t\t\t<div class=\"input-group form-group\">\n");
       out.write("\t\t\t\t\t\t<div class=\"input-group-prepend\">\n");
       out.write("\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n");
       out.write("\t\t\t\t\t\t</div>\n");
-      out.write("                                            <input type=\"text\" class=\"form-control\" placeholder=\"username\" name=\"username\">\n");
+      out.write("                                                ");
+
+                                                    if(username!=null){
+                                                
+      out.write("\n");
+      out.write("                                                <input type=\"text\" class=\"form-control\" placeholder=\"username\" name=\"username\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("                                                ");
+ } else {
+      out.write("\n");
+      out.write("                                                <input type=\"text\" class=\"form-control\" placeholder=\"username\" name=\"username\">\n");
+      out.write("                                                ");
+ } 
       out.write("\t\t\t\t\t\t\n");
       out.write("\t\t\t\t\t</div>\n");
       out.write("\t\t\t\t\t<div class=\"input-group form-group\">\n");
@@ -124,6 +147,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t</div>\n");
       out.write("\t</div>\n");
       out.write("        </div>\n");
+      out.write("        <footer class=\"py-5 bg-dark\">\n");
+      out.write("            <div class=\"container px-4 px-lg-5\"><p class=\"m-0 text-center text-white\">Copyright &copy; Your Website 2021</p></div>\n");
+      out.write("        </footer>\n");
       out.write("        <!-- Bootstrap core JS-->\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"></script>\n");
       out.write("        <!-- Core theme JS-->\n");

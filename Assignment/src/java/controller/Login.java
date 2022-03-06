@@ -71,28 +71,13 @@ public class Login extends HttpServlet {
             for (Cookie cooky : cookies) {
                if(cooky.getName().equals("username")){
                    request.setAttribute("username", cooky.getValue());
-               } else if(cooky.getName().equals("password")){
-                   request.setAttribute("password", cooky.getValue());
-               } else {
-                   request.getRequestDispatcher("login.jsp").forward(request, response);
                }
-            }           
-            String username = (String)request.getAttribute("username");
-            String password = (String)request.getAttribute("password");
-            CustomerDAO db = new CustomerDAO();
-            Customer cus = new Customer();
-            try {
-                cus = db.getCusByUsernameAndPassword(username, password);
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+               if(cooky.getName().equals("password")){
+                   request.setAttribute("password", cooky.getValue());
+               }     
             }
-            HttpSession session = request.getSession();
-            session.setAttribute("user", cus);
-            request.setAttribute("account", cus.getUsername());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        }    
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**
@@ -131,10 +116,11 @@ public class Login extends HttpServlet {
                session.setAttribute("user", cus);
            }         
            request.setAttribute("account", cus.getUsername());
-           request.getRequestDispatcher("index.jsp").forward(request, response);
+           request.getRequestDispatcher("user.jsp").forward(request, response);
        }
        else //login fail
-       {
+       {   
+           request.setAttribute("err", 1);
            request.getRequestDispatcher("login.jsp").forward(request, response);
        }
     }

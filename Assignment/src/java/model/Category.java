@@ -9,14 +9,14 @@ package model;
  *
  * @author khanh doan
  */
-public class Categories {
+public class Category {
     private int ID;
     private String name;
 
-    public Categories() {
+    public Category() {
     }
 
-    public Categories(int ID, String name) {
+    public Category(int ID, String name) {
         this.ID = ID;
         this.name = name;
     }

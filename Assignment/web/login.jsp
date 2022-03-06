@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +23,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
     <body style="background-image: url(Img/login.jpg)">
+        <%
+            String username = (String)request.getAttribute("username");
+            String password = (String)request.getAttribute("password");
+        %>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
@@ -46,19 +51,31 @@
 				<h3>Log In</h3>
 			</div>
 			<div class="card-body">
-				<form>
+                            ${requestScope.err==1?"Failed to username or password":""} <br/>
+                                <form action="Login" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-                                            <input type="text" class="form-control" placeholder="username" name="username">
-						
+                                                <%
+                                                    if(username!=null){
+                                                %>
+                                                <input type="text" class="form-control" placeholder="username" name="username" value="${username}">
+                                                <% } else {%>
+                                                <input type="text" class="form-control" placeholder="username" name="username">
+                                                <% } %>						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-                                            <input type="password" class="form-control" placeholder="password" name="password">
+                                                <%
+                                                    if(password!=null){
+                                                %>
+                                                <input type="text" class="form-control" placeholder="password" name="password" value="${password}">
+                                                <% } else {%>
+                                                <input type="text" class="form-control" placeholder="password" name="password">
+                                                <% } %>	
 					</div>
 					<div class="row align-items-center remember">
                                             <input type="checkbox" name="remember">Remember Me
@@ -85,6 +102,9 @@
 		</div>
 	</div>
         </div>
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

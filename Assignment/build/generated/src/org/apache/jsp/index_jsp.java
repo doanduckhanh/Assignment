@@ -77,8 +77,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n");
       out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n");
       out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n");
-      out.write("                                <li><hr class=\"dropdown-divider\"></li>\n");
-      out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Separated link</a></li>\n");
       out.write("                            </ul>\n");
       out.write("                        </li>\n");
       out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"Login\">Login</a></li>\n");
