@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.awt.Image;
 import java.sql.Date;
 
 /**
@@ -19,11 +20,12 @@ public class Book {
     private int number;
     private Date EntryDate;
     private int price;
+    private Image img;
 
     public Book() {
     }
 
-    public Book(int ID, String Name, int CategoryID, int AuthorID, int number, Date EntryDate, int price) {
+    public Book(int ID, String Name, int CategoryID, int AuthorID, int number, Date EntryDate, int price, Image img) {
         this.ID = ID;
         this.Name = Name;
         this.CategoryID = CategoryID;
@@ -31,6 +33,7 @@ public class Book {
         this.number = number;
         this.EntryDate = EntryDate;
         this.price = price;
+        this.img=img;
     }
 
     public int getID() {
@@ -87,5 +90,13 @@ public class Book {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
     }
 }

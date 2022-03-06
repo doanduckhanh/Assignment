@@ -13,20 +13,29 @@ import java.sql.Date;
  */
 public class Order {
     private int orid;
-    private Customer Cus;
-    private Book book;
+    private String book;
     private Date start;
     private Date end;
+    private boolean status;
+    private Customer cus;
 
     public Order() {
     }
 
-    public Order(int orid, Customer Cus, Book book, Date start, Date end) {
+    public Order(int orid, String book, Date start, Date end, boolean status) {
         this.orid = orid;
-        this.Cus = Cus;
         this.book = book;
         this.start = start;
         this.end = end;
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getOrid() {
@@ -37,19 +46,11 @@ public class Order {
         this.orid = orid;
     }
 
-    public Customer getCus() {
-        return Cus;
-    }
-
-    public void setCus(Customer Cus) {
-        this.Cus = Cus;
-    }
-
-    public Book getBook() {
+    public String getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(String book) {
         this.book = book;
     }
 
@@ -67,5 +68,10 @@ public class Order {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "orid=" + orid + ", book=" + book + ", start=" + start + ", end=" + end + '}';
     }
 }

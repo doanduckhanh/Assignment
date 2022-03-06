@@ -116,7 +116,7 @@ public class Login extends HttpServlet {
                session.setAttribute("user", cus);
            }         
            request.setAttribute("account", cus.getUsername());
-           request.getRequestDispatcher("user.jsp").forward(request, response);
+           request.getRequestDispatcher("orderuser").forward(request, response);
        }
        else //login fail
        {   
