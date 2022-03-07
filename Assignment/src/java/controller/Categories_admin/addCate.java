@@ -12,7 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Category;
+import DAL.CategoriesDAO;
 /**
  *
  * @author khanh doan
@@ -32,18 +33,14 @@ public class addCate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet addCate</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet addCate at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        String cid = request.getParameter("cateid");
+        String cname = request.getParameter("catename");
+        Category cate = new Category();
+        CategoriesDAO db = new CategoriesDAO();
+        cate.setID(Integer.parseInt(cid));
+        cate.setName(cname);
+        db.insertCategory(cate);
+        response.sendRedirect("admin");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

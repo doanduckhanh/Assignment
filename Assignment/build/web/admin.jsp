@@ -47,6 +47,7 @@
             </ul>
   
             <div class="tab-content">
+                <!-- Order Content -->
                 <div id="order" class="tab-pane fade in active">
                     <h3>Order</h3>
                     <button class="btn btn-primary"><a href="Order_admin/addOrder.jsp">Create Order</a></button>
@@ -85,6 +86,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Book Content -->
                 <div id="book" class="tab-pane fade">
                     <h3>Book</h3>
                     <button class="btn btn-primary"><a href="Book_admin/addBook.jsp">Add Book</a></button>
@@ -123,12 +125,13 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Categories Content -->
                 <div id="categories" class="tab-pane fade">
                     <h3>Categories</h3>
                     <button class="btn btn-primary" onclick="openForm()">Create Category</button>
                                         <div class="form-popup" id="myForm">
                                             <h1>Add Category</h1>
-                                            <form action="Categories_admin/addCate" method="post" class="form-container">
+                                            <form action="addCate" method="post" class="form-container">
                                                 <input type="text" id="form3Example8" class="form-control form-control-lg" name="cateid"/>
                                                 <label class="form-label" for="form3Example8">Cate ID</label>  
                                                 <input type="text" id="form3Example8" class="form-control form-control-lg" name="catename"/>
@@ -152,16 +155,14 @@
                                     <td>${x.name}</td>
                                     <td>${x.numB}</td>
                                     <td>
-                                        <button class="btn btn-primary" onclick="openForm()">Update Category</button>
-                                        <div class="form-popup" id="myForm">
+                                        <button class="btn btn-primary" onclick="openForm1()">Update Category</button>
+                                        <div class="form-popup" id="myForm1">
                                             <h1>Update Category</h1>
-                                            <form action="Categories_admin/updateCate" method="post" class="form-container">
-                                                <input type="text" id="form3Example8" class="form-control form-control-lg" name="cateid"/>
-                                                <label class="form-label" for="form3Example8">Cate ID</label>  
+                                            <form action="updateCate" method="post" class="form-container">                                                 
                                                 <input type="text" id="form3Example8" class="form-control form-control-lg" name="catename"/>
                                                 <label class="form-label" for="form3Example8">Category Name</label>  
                                                 <button type="submit" class="btn">Update</button>
-                                                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                                <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
                                             </form>
                                         </div>
                                         <button class="btn btn-primary"><a href="#" onclick="showMess(${x.ID})">Delete Category</a></button>
@@ -171,6 +172,8 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Author Content -->
+                
             </div>
         </div>
       
@@ -191,6 +194,12 @@
             }
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+            }
+            function openForm1() {
+                document.getElementById("myForm1").style.display = "block";
+            }
+            function closeForm1() {
+                document.getElementById("myForm1").style.display = "none";
             }
         </script>
     </body>
