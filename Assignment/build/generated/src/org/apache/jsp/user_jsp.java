@@ -94,18 +94,19 @@ public final class user_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </form>\n");
       out.write("        </div>\n");
-      out.write("        <div class=\"row g-0\">\n");
-      out.write("            <div class=\"col-md-2\" id=\"categories\">\n");
-      out.write("                <h3>Categories</h3>\n");
+      out.write("        <div class=\"container\">\n");
+      out.write("            <div class=\"row\">\n");
+      out.write("                <div class=\"col-3\">\n");
+      out.write("                    <h3>Categories</h3>\n");
       out.write("                <div class=\"list-group\">\n");
       out.write("                <a href=\"#\" class=\"list-group-item list-group-item-action\">The current link item</a>\n");
       out.write("                <a href=\"#\" class=\"list-group-item list-group-item-action\">A second link item</a>\n");
       out.write("                <a href=\"#\" class=\"list-group-item list-group-item-action\">A third link item</a>\n");
       out.write("                <a href=\"#\" class=\"list-group-item list-group-item-action\">A fourth link item</a>\n");
       out.write("                </div>\n");
-      out.write("            </div>\n");
-      out.write("            <div class=\"col-md-10\">\n");
-      out.write("                <table border = \"1px solid black\">\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"col-9\">\n");
+      out.write("                    <table>\n");
       out.write("                    <tr>\n");
       out.write("                        <td>ID</td>\n");
       out.write("                        <td>Name</td>\n");
@@ -114,10 +115,13 @@ public final class user_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <td>Status</td>\n");
       out.write("                    </tr>\n");
       out.write("                </table>\n");
-      out.write("            </div>          \n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
+      out.write("\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

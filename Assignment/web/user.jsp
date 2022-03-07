@@ -55,18 +55,19 @@
                 </div>
             </form>
         </div>
-        <div class="row g-0">
-            <div class="col-md-2" id="categories">
-                <h3>Categories</h3>
-                <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">The current link item</a>
-                <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-                <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+        
+            <div class="row">
+                <div class="col-3">
+                    <h3>Categories</h3>
+                    <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">The current link item</a>
+                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-10">
-                <table border = "1px solid black">
+                <div class="col-9">
+                    <table>
                     <tr>
                         <td>ID</td>
                         <td>Name</td>
@@ -75,7 +76,10 @@
                         <td>Status</td>
                     </tr>
                 </table>
-            </div>          
-        </div>
+                </div>
+            </div>
+        
     </body>
 </html>
+
+

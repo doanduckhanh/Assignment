@@ -120,7 +120,21 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t<div class=\"input-group-prepend\">\n");
       out.write("\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n");
       out.write("\t\t\t\t\t\t</div>\n");
-      out.write("                                            <input type=\"password\" class=\"form-control\" placeholder=\"password\" name=\"password\">\n");
+      out.write("                                                ");
+
+                                                    if(password!=null){
+                                                
+      out.write("\n");
+      out.write("                                                <input type=\"text\" class=\"form-control\" placeholder=\"password\" name=\"password\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${password}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("                                                ");
+ } else {
+      out.write("\n");
+      out.write("                                                <input type=\"text\" class=\"form-control\" placeholder=\"password\" name=\"password\">\n");
+      out.write("                                                ");
+ } 
+      out.write("\t\n");
       out.write("\t\t\t\t\t</div>\n");
       out.write("\t\t\t\t\t<div class=\"row align-items-center remember\">\n");
       out.write("                                            <input type=\"checkbox\" name=\"remember\">Remember Me\n");
