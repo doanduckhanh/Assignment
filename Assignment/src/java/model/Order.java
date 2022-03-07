@@ -17,17 +17,18 @@ public class Order {
     private Date start;
     private Date end;
     private boolean status;
-    private Customer cus;
+    private String cus;
 
-    public Order() {
-    }
-
-    public Order(int orid, String book, Date start, Date end, boolean status) {
+    public Order(int orid, String book, Date start, Date end, boolean status, String cus) {
         this.orid = orid;
         this.book = book;
         this.start = start;
         this.end = end;
         this.status = status;
+        this.cus = cus;
+    }
+
+    public Order() {
     }
 
     public boolean isStatus() {
@@ -70,6 +71,15 @@ public class Order {
         this.end = end;
     }
 
+    public String getCus() {
+        return cus;
+    }
+
+    public void setCus(String cus) {
+        this.cus = cus;
+    }
+
+    
     @Override
     public String toString() {
         return "Order{" + "orid=" + orid + ", book=" + book + ", start=" + start + ", end=" + end + '}';

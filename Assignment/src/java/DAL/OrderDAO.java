@@ -28,6 +28,7 @@ public class OrderDAO extends BaseDAO<Order>{
            {
                Order or = new Order();
                or.setOrid(rs.getInt(1));
+               or.setCus(rs.getString(2));
                or.setBook(rs.getString(3));
                or.setStart(rs.getDate(4));
                or.setEnd(rs.getDate(5));       
