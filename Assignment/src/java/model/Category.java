@@ -12,13 +12,15 @@ package model;
 public class Category {
     private int ID;
     private String name;
+    private int numB;
 
     public Category() {
     }
 
-    public Category(int ID, String name) {
+    public Category(int ID, String name, int numB) {
         this.ID = ID;
         this.name = name;
+        this.numB = numB;
     }
 
     public int getID() {
@@ -36,6 +38,12 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+    public int getNumB() {
+        return numB;
+    }
+
+    public void setNumB(int numB) {
+        this.numB = numB;
+    }
 }
