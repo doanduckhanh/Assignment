@@ -68,15 +68,15 @@ public class CategoriesDAO extends BaseDAO<Category>{
        }
    }
     
-    public void updateCate(int id,Category c) {
+    public void updateCate(int id,String name) {
        try {
            String sql = "UPDATE [Categories]\n"
                    + "   SET [CateID] = ?\n"
                    + "      ,[CateName] = ?\n"
                    + " WHERE [CateID] = ?";
            PreparedStatement statement = connection.prepareStatement(sql);
-           statement.setInt(1, c.getID());
-           statement.setString(2, c.getName());
+           statement.setInt(1, id);
+           statement.setString(2, name);
            statement.setInt(3, id);
            statement.executeUpdate();
        } catch (SQLException ex) {

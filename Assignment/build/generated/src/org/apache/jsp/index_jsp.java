@@ -71,12 +71,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <form class=\"d-flex\">\n");
       out.write("                        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n");
       out.write("                        <button class=\"btn btn-outline-success\" type=\"submit\">Search</button>\n");
-      out.write("                    </form>\n");
+      out.write("                </form>\n");
       out.write("                <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n");
       out.write("                    <span class=\"navbar-toggler-icon\"></span>\n");
       out.write("                </button>\n");
       out.write("                <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n");
-      out.write("                    <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n");
+      out.write("                    <ul class=\"nav navbar-nav navbar-right\">\n");
       out.write("                        <li class=\"nav-item\">\n");
       out.write("                            <a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a>\n");
       out.write("                        </li>\n");

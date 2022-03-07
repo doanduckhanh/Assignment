@@ -35,7 +35,7 @@ public class deleteCate extends HttpServlet {
         String id = request.getParameter("id");
         CategoriesDAO dao = new CategoriesDAO();
         dao.deleteStudent(Integer.parseInt(id));
-        request.getRequestDispatcher("admin").forward(request, response);
+        response.sendRedirect("admin");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

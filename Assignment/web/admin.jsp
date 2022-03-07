@@ -158,7 +158,9 @@
                                         <button class="btn btn-primary" onclick="openForm1()">Update Category</button>
                                         <div class="form-popup" id="myForm1">
                                             <h1>Update Category</h1>
-                                            <form action="updateCate" method="post" class="form-container">                                                 
+                                            <form action="updateCate" method="post" class="form-container">           
+                                                <input type="text" id="form3Example8" class="form-control form-control-lg" name="cateid" value="${x.ID}" readonly/>
+                                                <label class="form-label" for="form3Example8">Category Name</label>  
                                                 <input type="text" id="form3Example8" class="form-control form-control-lg" name="catename"/>
                                                 <label class="form-label" for="form3Example8">Category Name</label>  
                                                 <button type="submit" class="btn">Update</button>
