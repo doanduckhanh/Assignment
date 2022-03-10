@@ -34,7 +34,7 @@ public class deleteCate extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
         CategoriesDAO dao = new CategoriesDAO();
-        dao.deleteStudent(Integer.parseInt(id));
+        dao.deleteCategory(Integer.parseInt(id));
         response.sendRedirect("admin");
     }
 

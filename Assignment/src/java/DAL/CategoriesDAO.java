@@ -40,7 +40,7 @@ public class CategoriesDAO extends BaseDAO<Category>{
     public ArrayList<Book> getBooksByCategories(String Cate){
         return null;    
     }
-    public void deleteStudent(int id) {
+    public void deleteCategory(int id) {
        try {
            String sql = "DELETE FROM Categories WHERE CateID=?";
            PreparedStatement statement = connection.prepareStatement(sql);
@@ -83,4 +83,13 @@ public class CategoriesDAO extends BaseDAO<Category>{
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
+    
+    public Category getById(int id){
+        for(Category c : getAll()){
+            if(id==c.getID()){
+                return c;
+            }
+        }
+        return null;
+    }
 }

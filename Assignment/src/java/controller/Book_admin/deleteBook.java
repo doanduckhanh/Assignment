@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.Book_admin;
 
-import DAL.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,18 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAL.OrderDAO;
-import model.Order;
-import java.util.ArrayList;
-import DAL.CategoriesDAO;
-import model.Book;
-import model.Category;
+
 /**
  *
  * @author khanh doan
  */
-@WebServlet(name = "admin", urlPatterns = {"/admin"})
-public class admin extends HttpServlet {
+@WebServlet(name = "deleteBook", urlPatterns = {"/deleteBook"})
+public class deleteBook extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,22 +32,18 @@ public class admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        OrderDAO db = new OrderDAO();
-        ArrayList<Order> listor = new ArrayList<>();
-        listor = db.getAll();
-        
-        BookDAO db2 = new BookDAO();
-        ArrayList<Book> listb = new ArrayList<>();
-        listb = db2.getAll();
-        
-        CategoriesDAO db1 = new CategoriesDAO();
-        ArrayList<Category> listcate = new ArrayList<>();
-        listcate = db1.getAll();
-        
-        request.setAttribute("list", listor);
-        request.setAttribute("list1", listcate);
-        request.setAttribute("listbook", listb);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet deleteBook</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet deleteBook at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

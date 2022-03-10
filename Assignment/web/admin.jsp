@@ -30,11 +30,26 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <div class="navbar-header">
                 <a href="#" class="navbar-brand has-logo">
-                    <img src="https://cdn.discordapp.com/attachments/387267441245552642/942414648764944424/unknown.png" height="40" width="110" alt="reading">
+                    <span class="logo d-inline">
+                        <img src="https://cdn.discordapp.com/attachments/387267441245552642/942414648764944424/unknown.png" height="40" width="110" alt="reading">
+                    </span>
                 </a>   
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.jsp">Log Out</a>
+                        </li>
+                    </ul>                  
                 </div>
+                <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </nav>
         <!-- Content -->
@@ -93,31 +108,29 @@
                         <thead>
                             <tr>
                                 <th>Book ID</th>
-                                <th>Customer ID</th>
-                                <th>Book ID</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th>
+                                <th>Book Name</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Number of Book</th>
+                                <th>Entry Date</th>
+                                <th>Price</th>
+                                <th>Image</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${list}" var="x">
+                            <c:forEach items="${listbook}" var="x">
                                 <tr>
-                                    <td>${x.orid}</td>
-                                    <td>${x.cus}</td>
-                                    <td>${x.book}</td>
-                                    <td>${x.start}</td>
-                                    <td>${x.end}</td>
+                                    <td>${x.ID}</td>
+                                    <td>${x.Name}</td>
+                                    <td>${x.author}</td>
+                                    <td>${x.category.name}</td>
+                                    <td>${x.number}</td>
+                                    <td>${x.EntryDate}</td>
+                                    <td>${x.price}</td>
+                                    <td></td>
                                     <td>
-                                        <c:if test="${x.status==1}">
-                                            Done
-                                        </c:if>
-                                        <c:if test="${x.status==0}">
-                                            No
-                                        </c:if>
-                                    </td>
-                                    <td>
-                                        <a href=""></a>
+                                        <button class="btn btn-primary"><a href="">Update</a></button>
+                                        <button class="btn btn-primary"><a href="">Delete</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>

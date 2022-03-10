@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Book {
     private int ID;
     private String Name;
-    private int CategoryID;
+    private Category category;
     private String author;
     private int number;
     private Date EntryDate;
@@ -25,10 +25,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(int ID, String Name, int CategoryID, String Author, int number, Date EntryDate, int price, Image img) {
+    public Book(int ID, String Name, Category Category, String Author, int number, Date EntryDate, int price, Image img) {
         this.ID = ID;
         this.Name = Name;
-        this.CategoryID = CategoryID;
+        this.category = Category;
         this.author = Author;
         this.number = number;
         this.EntryDate = EntryDate;
@@ -52,14 +52,13 @@ public class Book {
         this.Name = Name;
     }
 
-    public int getCategoryID() {
-        return CategoryID;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryID(int CategoryID) {
-        this.CategoryID = CategoryID;
+    public void setCategory(Category category) {
+        this.category = category;
     }
-
     public String getAuthor() {
         return author;
     }
