@@ -21,20 +21,27 @@ public class BookDAO extends BaseDAO<Book>{
     public ArrayList<Book> getAll(){
         ArrayList<Book> list = new ArrayList<>();
         CategoriesDAO db = new CategoriesDAO();
-        String sql = "SELECT * FROM [Book]";
+        String sql = "SELECT [ID]\n" +
+"      ,[Name]\n" +
+"      ,[CategoryID]\n" +
+"      ,[Number]\n" +
+"      ,[EntryDate]\n" +
+"      ,[Price]\n" +
+"      ,[Author]\n" +
+"  FROM [LibraryDb].[dbo].[Book]";
         try {
            PreparedStatement statement = connection.prepareStatement(sql);
            ResultSet rs = statement.executeQuery();
            while(rs.next())
            {
                Book b = new Book();
-               b.setID(rs.getInt(1));
-               b.setName(rs.getString(2));
-               b.setCategory(db.getById(rs.getInt(3)));
-               b.setNumber(rs.getInt(4));
-               b.setEntryDate(rs.getDate(5));       
-               b.setPrice(rs.getInt(6));
-               b.setAuthor(rs.getString(8));
+               b.setID(rs.getInt("ID"));
+               b.setName(rs.getString("Name"));
+               b.setCategory(db.getById(rs.getInt("CategoryID")));
+               b.setNumber(rs.getInt("Number"));
+               b.setEntryDate(rs.getDate("EntryDate"));       
+               b.setPrice(rs.getInt("Price"));
+               b.setAuthor(rs.getString("Author"));
                list.add(b);
            }
         } catch (Exception e) {

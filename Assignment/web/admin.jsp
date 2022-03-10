@@ -114,23 +114,21 @@
                                 <th>Number of Book</th>
                                 <th>Entry Date</th>
                                 <th>Price</th>
-                                <th>Image</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listbook}" var="x">
+                            <c:forEach items="${list2}" var="b">
                                 <tr>
-                                    <td>${x.ID}</td>
-                                    <td>${x.Name}</td>
-                                    <td>${x.author}</td>
-                                    <td>${x.category.name}</td>
-                                    <td>${x.number}</td>
-                                    <td>${x.EntryDate}</td>
-                                    <td>${x.price}</td>
-                                    <td></td>
+                                    <td>${b.ID}</td>
+                                    <td>${b.name}</td>
+                                    <td>${b.author}</td>
+                                    <td>${b.category.name}</td>
+                                    <td>${b.number}</td>
+                                    <td>${b.entryDate}</td>
+                                    <td>${b.price}</td>
                                     <td>
                                         <button class="btn btn-primary"><a href="">Update</a></button>
-                                        <button class="btn btn-primary" ><a href="#" onclick="showMess1(${x.ID})">Delete</a></button>
+                                        <button class="btn btn-primary" ><a href="#" onclick="showMess1(${b.ID})">Delete</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>

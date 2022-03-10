@@ -52,7 +52,7 @@ public class admin extends HttpServlet {
         
         request.setAttribute("list", listor);
         request.setAttribute("list1", listcate);
-        request.setAttribute("listbook", listb);
+        request.setAttribute("list2", listb);
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 

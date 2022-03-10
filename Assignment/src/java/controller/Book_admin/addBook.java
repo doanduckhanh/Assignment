@@ -16,6 +16,7 @@ import DAL.CategoriesDAO;
 import java.util.ArrayList;
 import model.Book;
 import DAL.BookDAO;
+import java.sql.Date;
 import model.Category;
 /**
  *
@@ -55,8 +56,7 @@ public class addBook extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
+        processRequest(request, response);       
     }
 
     /**
@@ -79,8 +79,17 @@ public class addBook extends HttpServlet {
         String price = request.getParameter("price");
         String author = request.getParameter("author");
         BookDAO db = new BookDAO();
+        CategoriesDAO dbc = new CategoriesDAO();
         Book b =new Book();
-        
+        b.setID(Integer.parseInt(id));
+        b.setName(name);
+        b.setCategory(dbc.getById(Integer.parseInt(cate)));
+        b.setNumber(Integer.parseInt(num));
+        b.setEntryDate(Date.valueOf(entrydate));
+        b.setPrice(Integer.parseInt(price));
+        b.setAuthor(author);
+        db.insertBook(b);
+        request.getRequestDispatcher("admin").forward(request, response);
     }
 
     /**

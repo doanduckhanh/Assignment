@@ -62,7 +62,7 @@
                     <label class="form-label" for="form3Example8">Category :</label>
                     <br/>
                     <c:forEach items="${listcate}" var="x">
-                        <input type="radio" name="category" value="${x.name}"/>${x.name}
+                        <input type="radio" name="category" value="${x.ID}"/>${x.name}
                     </c:forEach>
                 </div>
                   
