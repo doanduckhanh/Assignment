@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAL.BookDAO;
+import DAL.CategoriesDAO;
+import java.sql.Date;
+import java.util.ArrayList;
+import model.Book;
+import model.Category;
+        
 /**
  *
  * @author khanh doan
  */
-@WebServlet(name = "deleteBook", urlPatterns = {"/deleteBook"})
-public class deleteBook extends HttpServlet {
+@WebServlet(name = "updateBook", urlPatterns = {"/updateBook"})
+public class updateBook extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +43,10 @@ public class deleteBook extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet deleteBook</title>");            
+            out.println("<title>Servlet updateBook</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet deleteBook at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateBook at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,10 +65,17 @@ public class deleteBook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        String id= request.getParameter("id");
+        String id = request.getParameter("id");
         BookDAO db = new BookDAO();
-        db.deleteBook(Integer.parseInt(id));
-        response.sendRedirect("admin");
+        Book b = new Book();
+        b = db.getBookById(Integer.parseInt(id));
+        
+        CategoriesDAO db1 = new CategoriesDAO();
+        ArrayList<Category> listca = new ArrayList<>();
+        listca = db1.getAll();
+        request.setAttribute("listcate", listca);
+        request.setAttribute("book", b);
+        request.getRequestDispatcher("Book_admin/updateBook.jsp").forward(request, response);
     }
 
     /**
@@ -76,7 +89,26 @@ public class deleteBook extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String cate = request.getParameter("category");
+        String num = request.getParameter("number");
+        String entrydate = request.getParameter("entrydate");
+        String price = request.getParameter("price");
+        String author = request.getParameter("author");
+        BookDAO db = new BookDAO();
+        CategoriesDAO dbc = new CategoriesDAO();
+        Book b =new Book();
+        b.setID(Integer.parseInt(id));
+        b.setName(name);
+        b.setCategory(dbc.getById(Integer.parseInt(cate)));
+        b.setNumber(Integer.parseInt(num));
+        b.setEntryDate(Date.valueOf(entrydate));
+        b.setPrice(Integer.parseInt(price));
+        b.setAuthor(author);
+        db.updateBook(Integer.parseInt(id), b);
+        request.getRequestDispatcher("admin").forward(request, response);
     }
 
     /**

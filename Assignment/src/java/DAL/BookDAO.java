@@ -93,7 +93,7 @@ public class BookDAO extends BaseDAO<Book>{
        }
    }
     
-    public void updateCate(int id,Book b) {
+    public void updateBook(int id,Book b) {
        try {
            String sql = "UPDATE [Book]\n"
                    + "   SET [ID] = ?\n"
@@ -103,7 +103,7 @@ public class BookDAO extends BaseDAO<Book>{
                    + "      ,[EntryDate] = ?\n"
                    + "      ,[Price] = ?\n"
                    + "      ,[Author] = ?\n"
-                   + " WHERE [CateID] = ?";
+                   + " WHERE [ID] = ?";
            PreparedStatement statement = connection.prepareStatement(sql);
            statement.setInt(1, id);
            statement.setString(2, b.getName());
@@ -112,9 +112,36 @@ public class BookDAO extends BaseDAO<Book>{
            statement.setDate(5, b.getEntryDate());
            statement.setInt(6, b.getPrice());
            statement.setString(7, b.getAuthor());
+           statement.setInt(8, id);
            statement.executeUpdate();
        } catch (SQLException ex) {
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
+    
+    public Book getBookById(int id){
+        CategoriesDAO db = new CategoriesDAO();
+        try {
+           String sql = "SELECT * FROM Book \n"
+                   + "WHERE id = ?";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setInt(1, id);
+           ResultSet rs = statement.executeQuery();
+           if (rs.next()) {
+               Book s = new Book();
+               s.setID(rs.getInt(1));
+               s.setName(rs.getString(2));
+               s.setCategory(db.getById(rs.getInt(3)));
+               statement.setInt(4, s.getNumber());
+               statement.setDate(5, s.getEntryDate());
+               statement.setInt(6, s.getPrice());
+               statement.setString(7, s.getAuthor());
+               return s;
+           }
+
+       } catch (SQLException ex) {
+           Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return null;
+    }
 }

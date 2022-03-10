@@ -127,7 +127,7 @@
                                     <td>${b.entryDate}</td>
                                     <td>${b.price}</td>
                                     <td>
-                                        <button class="btn btn-primary"><a href="">Update</a></button>
+                                        <button class="btn btn-primary"><a href="updateBook?id=${b.ID}">Update</a></button>
                                         <button class="btn btn-primary" ><a href="#" onclick="showMess1(${b.ID})">Delete</a></button>
                                     </td>
                                 </tr>
