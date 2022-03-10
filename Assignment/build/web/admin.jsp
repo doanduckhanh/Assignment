@@ -103,7 +103,7 @@
                 <!-- Book Content -->
                 <div id="book" class="tab-pane fade">
                     <h3>Book</h3>
-                    <button class="btn btn-primary"><a href="Book_admin/addBook.jsp">Add Book</a></button>
+                    <button class="btn btn-primary"><a href="">Add Book</a></button>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -130,7 +130,7 @@
                                     <td></td>
                                     <td>
                                         <button class="btn btn-primary"><a href="">Update</a></button>
-                                        <button class="btn btn-primary"><a href="">Delete</a></button>
+                                        <button class="btn btn-primary" ><a href="#" onclick="showMess1(${x.ID})">Delete</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -199,6 +199,12 @@
                 var option = confirm("Are you sure to delete ?");
                 if(option===true){
                     window.location.href='deleteCate?id='+id;
+                }
+            }
+            function showMess1(id){
+                var option = confirm("Are you sure to delete ?");
+                if(option===true){
+                    window.location.href='deleteBook?id='+id;
                 }
             }
             function openForm() {

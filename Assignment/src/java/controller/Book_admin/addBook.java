@@ -12,13 +12,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import DAL.CategoriesDAO;
+import java.util.ArrayList;
+import model.Book;
 import DAL.BookDAO;
+import model.Category;
 /**
  *
  * @author khanh doan
  */
-@WebServlet(name = "deleteBook", urlPatterns = {"/deleteBook"})
-public class deleteBook extends HttpServlet {
+@WebServlet(name = "addBook", urlPatterns = {"/addBook"})
+public class addBook extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +36,11 @@ public class deleteBook extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet deleteBook</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet deleteBook at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        CategoriesDAO db = new CategoriesDAO();
+        ArrayList<Category> listca = new ArrayList<>();
+        listca = db.getAll();
+        request.setAttribute("listcate", listca);
+        request.getRequestDispatcher("Book_admin/addBook.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,11 +55,8 @@ public class deleteBook extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String id= request.getParameter("id");
-        BookDAO db = new BookDAO();
-        db.deleteBook(Integer.parseInt(id));
-        response.sendRedirect("admin.jsp");
+        processRequest(request, response);
+        
     }
 
     /**
@@ -76,7 +70,17 @@ public class deleteBook extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String cate = request.getParameter("category");
+        String num = request.getParameter("number");
+        String entrydate = request.getParameter("entrydate");
+        String price = request.getParameter("price");
+        String author = request.getParameter("author");
+        BookDAO db = new BookDAO();
+        Book b =new Book();
+        
     }
 
     /**

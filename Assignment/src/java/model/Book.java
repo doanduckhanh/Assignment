@@ -20,12 +20,11 @@ public class Book {
     private int number;
     private Date EntryDate;
     private int price;
-    private Image img;
 
     public Book() {
     }
 
-    public Book(int ID, String Name, Category Category, String Author, int number, Date EntryDate, int price, Image img) {
+    public Book(int ID, String Name, Category Category, String Author, int number, Date EntryDate, int price) {
         this.ID = ID;
         this.Name = Name;
         this.category = Category;
@@ -33,7 +32,6 @@ public class Book {
         this.number = number;
         this.EntryDate = EntryDate;
         this.price = price;
-        this.img=img;
     }
 
     public int getID() {
@@ -89,13 +87,5 @@ public class Book {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public Image getImg() {
-        return img;
-    }
-
-    public void setImg(Image img) {
-        this.img = img;
     }
 }

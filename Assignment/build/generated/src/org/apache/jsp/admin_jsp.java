@@ -139,7 +139,7 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <!-- Book Content -->\n");
       out.write("                <div id=\"book\" class=\"tab-pane fade\">\n");
       out.write("                    <h3>Book</h3>\n");
-      out.write("                    <button class=\"btn btn-primary\"><a href=\"Book_admin/addBook.jsp\">Add Book</a></button>\n");
+      out.write("                    <button class=\"btn btn-primary\"><a href=\"\">Add Book</a></button>\n");
       out.write("                    <table class=\"table table-bordered\">\n");
       out.write("                        <thead>\n");
       out.write("                            <tr>\n");
@@ -205,6 +205,12 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                var option = confirm(\"Are you sure to delete ?\");\n");
       out.write("                if(option===true){\n");
       out.write("                    window.location.href='deleteCate?id='+id;\n");
+      out.write("                }\n");
+      out.write("            }\n");
+      out.write("            function showMess1(id){\n");
+      out.write("                var option = confirm(\"Are you sure to delete ?\");\n");
+      out.write("                if(option===true){\n");
+      out.write("                    window.location.href='deleteBook?id='+id;\n");
       out.write("                }\n");
       out.write("            }\n");
       out.write("            function openForm() {\n");
@@ -398,7 +404,9 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                    <td></td>\n");
           out.write("                                    <td>\n");
           out.write("                                        <button class=\"btn btn-primary\"><a href=\"\">Update</a></button>\n");
-          out.write("                                        <button class=\"btn btn-primary\"><a href=\"\">Delete</a></button>\n");
+          out.write("                                        <button class=\"btn btn-primary\" ><a href=\"#\" onclick=\"showMess1(");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.ID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(")\">Delete</a></button>\n");
           out.write("                                    </td>\n");
           out.write("                                </tr>\n");
           out.write("                            ");
