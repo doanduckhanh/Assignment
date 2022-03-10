@@ -200,7 +200,7 @@ CREATE TABLE [dbo].[Book](
 	[ID] [int] NOT NULL,
 	[Name] [nchar](50) NOT NULL,
 	[CategoryID] [int] NOT NULL,
-	[AuthorID] [int] NOT NULL,
+	[Author] [nchar](50) NOT NULL,
 	[Number] [int] NULL,
 	[EntryDate] [date] NOT NULL,
 	[Price] [int] NOT NULL,

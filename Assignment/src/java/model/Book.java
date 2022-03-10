@@ -16,7 +16,7 @@ public class Book {
     private int ID;
     private String Name;
     private int CategoryID;
-    private int AuthorID;
+    private String author;
     private int number;
     private Date EntryDate;
     private int price;
@@ -25,11 +25,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(int ID, String Name, int CategoryID, int AuthorID, int number, Date EntryDate, int price, Image img) {
+    public Book(int ID, String Name, int CategoryID, String Author, int number, Date EntryDate, int price, Image img) {
         this.ID = ID;
         this.Name = Name;
         this.CategoryID = CategoryID;
-        this.AuthorID = AuthorID;
+        this.author = Author;
         this.number = number;
         this.EntryDate = EntryDate;
         this.price = price;
@@ -60,12 +60,12 @@ public class Book {
         this.CategoryID = CategoryID;
     }
 
-    public int getAuthorID() {
-        return AuthorID;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorID(int AuthorID) {
-        this.AuthorID = AuthorID;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public int getNumber() {

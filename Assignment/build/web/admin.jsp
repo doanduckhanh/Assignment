@@ -43,7 +43,6 @@
                 <li class="active"><a data-toggle="pill" href="#order">Order</a></li>
                 <li><a data-toggle="pill" href="#book">Book</a></li>
                 <li><a data-toggle="pill" href="#categories">Categories</a></li>
-                <li><a data-toggle="pill" href="#author">Categories</a></li>
             </ul>
   
             <div class="tab-content">
@@ -174,8 +173,6 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Author Content -->
-                
             </div>
         </div>
       
