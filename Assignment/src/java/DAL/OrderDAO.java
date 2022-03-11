@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Order;
@@ -39,5 +40,13 @@ public class OrderDAO extends BaseDAO<Order>{
                 Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;
+    }
+    
+    public List<Order> getListByPage(List<Order> list, int start, int end) {
+        ArrayList<Order> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
     }
 }

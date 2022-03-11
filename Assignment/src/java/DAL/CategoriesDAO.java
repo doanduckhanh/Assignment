@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Category;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Book;
@@ -91,5 +92,12 @@ public class CategoriesDAO extends BaseDAO<Category>{
             }
         }
         return null;
+    }
+    public List<Category> getListByPage(List<Category> list, int start, int end) {
+        ArrayList<Category> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
     }
 }

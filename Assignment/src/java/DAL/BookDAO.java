@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import model.Book;
 import DAL.CategoriesDAO;
 import java.sql.SQLException;
+import java.util.List;
 /**
  *
  * @author khanh doan
@@ -142,5 +143,11 @@ public class BookDAO extends BaseDAO<Book>{
        }
        return null;
     }
-    
+    public List<Book> getListByPage(List<Book> list, int start, int end) {
+        ArrayList<Book> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
 }

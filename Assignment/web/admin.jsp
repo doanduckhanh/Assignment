@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : admin.jsp
     Created on : Mar 6, 2022, 9:38:45 PM
     Author     : khanh doan
@@ -64,7 +64,6 @@
                 <!-- Order Content -->
                 <div id="order" class="tab-pane fade in active">
                     <h3>Order</h3>
-                    <button class="btn btn-primary"><a href="Order_admin/addOrder.jsp">Create Order</a></button>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -77,7 +76,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${list}" var="x">
+                            <c:forEach items="${listor}" var="x">
                                 <tr>
                                     <td>${x.orid}</td>
                                     <td>${x.cus}</td>
@@ -92,18 +91,22 @@
                                             No
                                         </c:if>
                                     </td>
-                                    <td>
-                                        <a href="">Update</a>
-                                    </td>
                                 </tr>                               
                             </c:forEach>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <a href="admin?pageor=${1}" style="color: black">First</a>
+                        <c:forEach begin="${1}" end="${requestScope.numor}" var="i">
+                            <a href="admin?pageor=${i}" style="color: black">${i}</a>
+                        </c:forEach>
+                        <a href="admin?pageor=${requestScope.numor}" style="color: black">Last</a>
+                    </div>
                 </div>
                 <!-- Book Content -->
                 <div id="book" class="tab-pane fade">
                     <h3>Book</h3>
-                    <button class="btn btn-primary"><a href="">Add Book</a></button>
+                    <button class="btn btn-primary"><a href="addBook">Add Book</a></button>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -117,7 +120,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${list2}" var="b">
+                            <c:forEach items="${listb}" var="b">
                                 <tr>
                                     <td>${b.ID}</td>
                                     <td>${b.name}</td>
@@ -134,6 +137,13 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <a href="admin?pageb=${1}" style="color: black">First</a>
+                        <c:forEach begin="${1}" end="${requestScope.numb}" var="i">
+                            <a href="admin?pageb=${i}" style="color: black">${i}</a>
+                        </c:forEach>
+                        <a href="admin?pageb=${requestScope.numb}" style="color: black">Last</a>
+                    </div>
                 </div>
                 <!-- Categories Content -->
                 <div id="categories" class="tab-pane fade">
@@ -183,15 +193,19 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <a href="admin?pagecate=${1}" style="color: black">First</a>
+                        <c:forEach begin="${1}" end="${requestScope.numcate}" var="i">
+                            <a href="admin?pagecate=${i}" style="color: black">${i}</a>
+                        </c:forEach>
+                        <a href="admin?pagecate=${requestScope.numcate}" style="color: black">Last</a>
+                    </div>
                 </div>
             </div>
         </div>
       
 
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
-        </footer>
+        
         <script>
             function showMess(id){
                 var option = confirm("Are you sure to delete ?");
@@ -203,6 +217,12 @@
                 var option = confirm("Are you sure to delete ?");
                 if(option===true){
                     window.location.href='deleteBook?id='+id;
+                }
+            }
+            function showMess2(id){
+                var option = confirm("Are you sure to delete ?");
+                if(option===true){
+                    window.location.href='deleteOrder?id='+id;
                 }
             }
             function openForm() {
