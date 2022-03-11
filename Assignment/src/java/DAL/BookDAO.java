@@ -96,8 +96,7 @@ public class BookDAO extends BaseDAO<Book>{
     public void updateBook(int id,Book b) {
        try {
            String sql = "UPDATE [Book]\n"
-                   + "   SET [ID] = ?\n"
-                   + "      ,[Name] = ?\n"
+                   + "   SET [Name] = ?\n"
                    + "      ,[CategoryID] = ?\n"
                    + "      ,[Number] = ?\n"
                    + "      ,[EntryDate] = ?\n"
@@ -105,14 +104,13 @@ public class BookDAO extends BaseDAO<Book>{
                    + "      ,[Author] = ?\n"
                    + " WHERE [ID] = ?";
            PreparedStatement statement = connection.prepareStatement(sql);
-           statement.setInt(1, id);
-           statement.setString(2, b.getName());
-           statement.setInt(3, b.getCategory().getID());
-           statement.setInt(4, b.getNumber());
-           statement.setDate(5, b.getEntryDate());
-           statement.setInt(6, b.getPrice());
-           statement.setString(7, b.getAuthor());
-           statement.setInt(8, id);
+           statement.setString(1, b.getName());
+           statement.setInt(2, b.getCategory().getID());
+           statement.setInt(3, b.getNumber());
+           statement.setDate(4, b.getEntryDate());
+           statement.setInt(5, b.getPrice());
+           statement.setString(6, b.getAuthor());
+           statement.setInt(7, id);
            statement.executeUpdate();
        } catch (SQLException ex) {
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,4 +142,5 @@ public class BookDAO extends BaseDAO<Book>{
        }
        return null;
     }
+    
 }

@@ -47,10 +47,10 @@
         </nav>
         <!-- Form add book -->
         <div class="container" style="margin-top: 10px">
-            <form action="addBook" method="post">             
+            <form action="updateBook" method="post">             
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example8">Book ID</label>
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${book.id}"/>                    
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${book.id}" readonly/>                    
                 </div>
                 
                 <div class="form-outline mb-4">
