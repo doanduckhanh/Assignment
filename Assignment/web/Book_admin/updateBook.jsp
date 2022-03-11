@@ -50,7 +50,7 @@
             <form action="updateBook" method="post">             
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example8">Book ID</label>
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${book.id}" readonly/>                    
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${book.ID}" readonly/>                    
                 </div>
                 
                 <div class="form-outline mb-4">
@@ -81,7 +81,7 @@
 
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example9">Entry Date</label>
-                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="entrydate" value="${book.entrydate}"/>
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="entrydate" value="${book.entryDate}"/>
                 </div>
 
                 <div class="form-outline mb-4">

@@ -88,4 +88,10 @@ public class Book {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" + "ID=" + ID + ", Name=" + Name + ", category=" + category + ", author=" + author + ", number=" + number + ", EntryDate=" + EntryDate + ", price=" + price + '}';
+    }
+    
 }

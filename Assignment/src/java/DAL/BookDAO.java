@@ -121,7 +121,7 @@ public class BookDAO extends BaseDAO<Book>{
         CategoriesDAO db = new CategoriesDAO();
         try {
            String sql = "SELECT * FROM Book \n"
-                   + "WHERE id = ?";
+                   + "WHERE ID = ?";
            PreparedStatement statement = connection.prepareStatement(sql);
            statement.setInt(1, id);
            ResultSet rs = statement.executeQuery();
@@ -130,10 +130,10 @@ public class BookDAO extends BaseDAO<Book>{
                s.setID(rs.getInt(1));
                s.setName(rs.getString(2));
                s.setCategory(db.getById(rs.getInt(3)));
-               statement.setInt(4, s.getNumber());
-               statement.setDate(5, s.getEntryDate());
-               statement.setInt(6, s.getPrice());
-               statement.setString(7, s.getAuthor());
+               s.setNumber(rs.getInt(4));
+               s.setEntryDate(rs.getDate(5));
+               s.setPrice(rs.getInt(6));
+               s.setAuthor(rs.getString(7));
                return s;
            }
 

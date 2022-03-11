@@ -69,7 +69,6 @@ public class updateBook extends HttpServlet {
         BookDAO db = new BookDAO();
         Book b = new Book();
         b = db.getBookById(Integer.parseInt(id));
-        
         CategoriesDAO db1 = new CategoriesDAO();
         ArrayList<Category> listca = new ArrayList<>();
         listca = db1.getAll();
@@ -100,7 +99,6 @@ public class updateBook extends HttpServlet {
         BookDAO db = new BookDAO();
         CategoriesDAO dbc = new CategoriesDAO();
         Book b =new Book();
-        b.setID(Integer.parseInt(id));
         b.setName(name);
         b.setCategory(dbc.getById(Integer.parseInt(cate)));
         b.setNumber(Integer.parseInt(num));
