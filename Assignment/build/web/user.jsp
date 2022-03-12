@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">                 
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile?id=${requestScope.cus.cusID}">${requestScope.cus.name}</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Your Order</a></li>  
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="ordercus?id=${requestScope.cus.cusID}">Your Order</a></li>  
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.jsp">Logout</a></li>                      
                     </ul>
                 </div>
@@ -98,13 +98,7 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <div class="pagination">
-                        <a href="admin?pageb=${1}" style="color: black">First</a>
-                        <c:forEach begin="${1}" end="${requestScope.numb}" var="i">
-                            <a href="admin?pageb=${i}" style="color: black">${i}</a>
-                        </c:forEach>
-                        <a href="admin?pageb=${requestScope.numb}" style="color: black">Last</a>
-                    </div>
+                    
                     </div>
                 </div>
             </div>

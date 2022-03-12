@@ -104,31 +104,7 @@ GO
 USE [LibraryDb]
 GO
 
-/****** Object:  Table [dbo].[Author]    Script Date: 03/01/2022 16:08:28 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Author](
-	[AuID] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Information] [nvarchar](max) NOT NULL,
- CONSTRAINT [PK_Author] PRIMARY KEY CLUSTERED 
-(
-	[AuID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-
 /****** Object:  Table [dbo].[Categories]    Script Date: 03/01/2022 16:06:52 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [dbo].[Categories](
 	[CateID] [int] NOT NULL,
@@ -179,8 +155,8 @@ CREATE TABLE [dbo].[Order](
 	[OrID] [int] NOT NULL,
 	[CusID] [nvarchar](50) NOT NULL,
 	[BookID] [int] NOT NULL,
-	[StartDate] [nvarchar](50) NOT NULL,
-	[EndDate] [nvarchar](50) NOT NULL,
+	[StartDat] [date] NOT NULL,
+	[EndDate] [date] NOT NULL,
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
 	[OrID] ASC
@@ -213,12 +189,7 @@ CREATE TABLE [dbo].[Book](
 
 GO
 
-ALTER TABLE [dbo].[Book]  WITH CHECK ADD  CONSTRAINT [FK_Book_Author] FOREIGN KEY([AuthorID])
-REFERENCES [dbo].[Author] ([AuID])
-GO
 
-ALTER TABLE [dbo].[Book] CHECK CONSTRAINT [FK_Book_Author]
-GO
 
 ALTER TABLE [dbo].[Book]  WITH CHECK ADD  CONSTRAINT [FK_Book_Categories] FOREIGN KEY([CategoryID])
 REFERENCES [dbo].[Categories] ([CateID])

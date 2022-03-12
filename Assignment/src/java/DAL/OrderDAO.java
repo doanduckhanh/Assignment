@@ -8,6 +8,7 @@ package DAL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,7 +34,11 @@ public class OrderDAO extends BaseDAO<Order>{
                or.setBook(rs.getString(3));
                or.setStart(rs.getDate(4));
                or.setEnd(rs.getDate(5));       
-               or.setStatus(rs.getBoolean(6));
+               if(rs.getString(6).equals("1")){
+                   or.setStatus(true);
+               } else {
+                   or.setStatus(false);
+               }
                list.add(or);
            }
         } catch (Exception e) {
@@ -73,4 +78,17 @@ public class OrderDAO extends BaseDAO<Order>{
         }
         return list;
     }
+    public void updateOrder(int id, boolean status) {
+       try {
+           String sql = "UPDATE [Order]\n"
+                   + "   SET [status] = ?\n"
+                   + " WHERE [OrID] = ?";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setBoolean(1, status);
+           statement.setInt(2, id);
+           statement.executeUpdate();
+       } catch (SQLException ex) {
+           Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
 }

@@ -84,12 +84,15 @@
                                     <td>${x.start}</td>
                                     <td>${x.end}</td>
                                     <td>
-                                        <c:if test="${x.status==1}">
-                                            Done
+                                        <c:if test="${x.status==true}">
+                                            <h4 style="color: green">Done</h4>
                                         </c:if>
-                                        <c:if test="${x.status==0}">
-                                            No
+                                        <c:if test="${x.status==false}">
+                                            <h4 style="color: red">No</h4>
                                         </c:if>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary"><a href="updateOrder?id=${x.orid}&status=${x.status}">Update</a></button>
                                     </td>
                                 </tr>                               
                             </c:forEach>
