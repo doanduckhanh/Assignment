@@ -19,6 +19,13 @@ import DAL.CustomerDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Book;
+import model.Category;
+import model.Order;
+import DAL.BookDAO;
+import DAL.CategoriesDAO;
+import DAL.OrderDAO;
+import java.util.ArrayList;
 /**
  *
  * @author khanh doan
@@ -121,8 +128,23 @@ public class Login extends HttpServlet {
                HttpSession session = request.getSession();
                session.setAttribute("user", cus);
            }         
-           request.setAttribute("account", cus.getUsername());
-           request.getRequestDispatcher("orderuser").forward(request, response);
+           request.setAttribute("cus", cus);
+           CategoriesDAO db1 = new CategoriesDAO();
+           ArrayList<Category> listcate = new ArrayList<>();
+           listcate = db1.getAll();
+           request.setAttribute("listcate", listcate);
+           
+           BookDAO db2 = new BookDAO();
+           ArrayList<Book> listbook = new ArrayList<>();
+           listbook = db2.getAll();
+           request.setAttribute("listbook", listbook);
+           
+           OrderDAO db3 = new OrderDAO();
+           ArrayList<Order> listorder = new ArrayList<>();
+           listorder = db3.getByCus(cus.getCusID());
+           request.setAttribute("listordercus", listorder);
+                
+           request.getRequestDispatcher("user.jsp").forward(request, response);
        }
        else //login fail
        {   

@@ -34,9 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Login">Login</a>
-                        </li>
+                        
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,6 +43,9 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Login">Login</a>
                         </li>
                     </ul>                  
                 </div>

@@ -150,4 +150,31 @@ public class BookDAO extends BaseDAO<Book>{
         }
         return arr;
     }
+    
+    public ArrayList<Book> getBookByCate(int cateid){
+        ArrayList<Book> listbook = new ArrayList<>();
+        CategoriesDAO db = new CategoriesDAO();
+        try {
+           String sql = "SELECT * FROM Book \n"
+                   + "WHERE CategoryID = ?";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setInt(1, cateid);
+           ResultSet rs = statement.executeQuery();
+           while (rs.next()) {
+               Book s = new Book();
+               s.setID(rs.getInt(1));
+               s.setName(rs.getString(2));
+               s.setCategory(db.getById(rs.getInt(3)));
+               s.setNumber(rs.getInt(4));
+               s.setEntryDate(rs.getDate(5));
+               s.setPrice(rs.getInt(6));
+               s.setAuthor(rs.getString(7));
+               listbook.add(s);
+           }
+
+       } catch (SQLException ex) {
+           Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return listbook;
+    }
 }
