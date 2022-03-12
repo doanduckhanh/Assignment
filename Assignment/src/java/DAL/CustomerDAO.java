@@ -91,4 +91,33 @@ public class CustomerDAO extends BaseDAO<Customer>{
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    
+    public Customer getById(String id){
+        String sql = "SELECT * FROM Customer WHERE CusID = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+            ResultSet rs = statement.executeQuery();
+            Customer c = new Customer();
+            c.setCusID(rs.getString(1));
+            c.setName(rs.getString(2));
+            c.setAddress(rs.getString(3));
+            c.setState(rs.getString(4));
+            c.setCity(rs.getString(5));
+            if(rs.getString(6).equals("1")){
+                c.setGender(true);
+            } else {
+                c.setGender(false);
+            }
+            c.setDob(rs.getDate(7));
+            c.setPhone(rs.getString(8));
+            c.setEmail(rs.getString(9));
+            c.setUsername(rs.getString(10));
+            c.setPassword(rs.getString(11));
+            return c;
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }
