@@ -12,7 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Customer;
+import DAL.CustomerDAO;
 /**
  *
  * @author khanh doan
@@ -32,17 +33,14 @@ public class updateCustomer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String id= request.getParameter("id");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet updateCustomer</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet updateCustomer at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            CustomerDAO db = new CustomerDAO();
+            Customer c =new Customer();
+            c = db.getById(id);
+            request.setAttribute("cus", c);
+            request.getRequestDispatcher("updateCus.jsp").forward(request, response);
         }
     }
 

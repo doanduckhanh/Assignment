@@ -177,4 +177,32 @@ public class BookDAO extends BaseDAO<Book>{
        }
        return listbook;
     }
+    public ArrayList<Book> getBookByName(String name){
+        CategoriesDAO db = new CategoriesDAO();
+        ArrayList<Book> listb = new ArrayList<>();
+        try {
+           String sql = "SELECT * FROM Book \n"
+                   + "WHERE Name LIKE ?\n"
+                   +"OR Author LIKE ?";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setString(1, "%"+name+"%");
+           statement.setString(2, "%"+name+"%");
+           ResultSet rs = statement.executeQuery();
+           while (rs.next()) {
+               Book s = new Book();
+               s.setID(rs.getInt(1));
+               s.setName(rs.getString(2));
+               s.setCategory(db.getById(rs.getInt(3)));
+               s.setNumber(rs.getInt(4));
+               s.setEntryDate(rs.getDate(5));
+               s.setPrice(rs.getInt(6));
+               s.setAuthor(rs.getString(7));
+               listb.add(s);
+           }
+        return listb;
+       } catch (SQLException ex) {
+           Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return null;
+    }
 }
