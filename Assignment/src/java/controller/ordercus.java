@@ -5,8 +5,6 @@
  */
 package controller;
 
-import DAL.BookDAO;
-import DAL.CategoriesDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,23 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Book;
-import java.util.ArrayList;
-import javax.servlet.http.Cookie;
-import model.Category;
-import model.Customer;
-import DAL.CustomerDAO;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author khanh doan
  */
-@WebServlet(name = "searchCate", urlPatterns = {"/searchCate"})
-public class searchCate extends HttpServlet {
+@WebServlet(name = "ordercus", urlPatterns = {"/ordercus"})
+public class ordercus extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,10 +37,10 @@ public class searchCate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchCate</title>");            
+            out.println("<title>Servlet ordercus</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchCate at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ordercus at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,52 +58,8 @@ public class searchCate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
-       HttpSession session = request.getSession(); 
-       Cookie[] cookies = request.getCookies();
-       String username = null;
-       String password = null;
-       for (Cookie cooky : cookies) {
-               if(cooky.getName().equals("username")){
-                   username = cooky.getValue();
-               }
-               if(cooky.getName().equals("password")){
-                   password = cooky.getValue();
-               }     
-            }
-       Customer cus = new Customer();
-       CustomerDAO dbcus = new CustomerDAO();
-        try {
-            cus = dbcus.getCusByUsernameAndPassword(username, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(searchCate.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.setAttribute("cus", cus);
-       String id = request.getParameter("id");
-       BookDAO db = new BookDAO();
-       ArrayList<Book> listb = new ArrayList<>();     
-       listb = db.getBookByCate(Integer.parseInt(id));
-        int pageb, numperpageb = 8;
-        int sizeb = listb.size();
-        int numb = (sizeb%8==0?(sizeb/8):((sizeb/8))+1);
-        String xpageb = request.getParameter("pageb");    
-        if (xpageb == null) {
-            pageb = 1;
-        } else {
-            pageb = Integer.parseInt(xpageb);
-        }
-        int startb, endb;
-        startb = (pageb - 1) * numperpageb;
-        endb = Math.min(pageb * numperpageb, sizeb);
-        List<Book> listbook = db.getListByPage(listb, startb, endb);
-        request.setAttribute("listbook", listb);
-        request.setAttribute("numb", numb);
-       
-        CategoriesDAO db1 = new CategoriesDAO();
-        ArrayList<Category> listcate = new ArrayList<>();
-        listcate = db1.getAll();
-        request.setAttribute("listcate", listcate);
-        request.getRequestDispatcher("user.jsp").forward(request, response);
+        //processRequest(request, response);
+        
     }
 
     /**
