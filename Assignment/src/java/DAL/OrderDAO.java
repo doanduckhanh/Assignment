@@ -58,7 +58,7 @@ public class OrderDAO extends BaseDAO<Order>{
     
     public ArrayList<Order> getByCus(String cusid){
         ArrayList<Order> list = new ArrayList<>();
-        String sql = "SELECT * FROM [Order] WHERE [CusID] = ?";
+        String sql = "SELECT o.CusID,o.BookID,o.StartDate,o.EndDate,o.status FROM [Order] o WHERE o.CusID = ?";
         try {
            PreparedStatement statement = connection.prepareStatement(sql);
            ResultSet rs = statement.executeQuery();
@@ -66,19 +66,19 @@ public class OrderDAO extends BaseDAO<Order>{
            while(rs.next())
            {
                Order or = new Order();
+               or.setCus(rs.getString("CusID"));
+               or.setBook(rs.getString("BookID"));
+               or.setStart(rs.getDate("StartDate"));
+               or.setEnd(rs.getDate("EndDate"));      
                or.setOrid(rs.getInt(6));
-               or.setCus(rs.getString(1));
-               or.setBook(rs.getString(2));
-               or.setStart(rs.getDate(3));
-               or.setEnd(rs.getDate(4));       
-               if(rs.getString(5).equals("1")){
+               if(rs.getInt("status")==1){
                    or.setStatus(true);
                } else {
                    or.setStatus(false);
                }
                list.add(or);
            }
-        } catch (Exception e) {
+        } catch (SQLException e) {
                 Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;

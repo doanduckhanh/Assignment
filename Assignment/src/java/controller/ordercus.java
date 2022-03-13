@@ -65,8 +65,15 @@ public class ordercus extends HttpServlet {
         OrderDAO db = new OrderDAO();
         ArrayList<Order> listor = new ArrayList<>();
         listor = db.getByCus(id);
-        request.setAttribute("listor", listor);
-        request.getRequestDispatcher("Customer/orderCus.jsp").forward(request, response);
+        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            for(Order o : listor){
+                out.println(o);
+            }
+        }
+        //request.setAttribute("listor", listor);
+        //request.getRequestDispatcher("Customer/orderCus.jsp").forward(request, response);
     }
 
     /**
