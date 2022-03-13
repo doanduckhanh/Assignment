@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Customer;
 import DAL.CustomerDAO;
+import java.sql.Date;
 /**
  *
  * @author khanh doan
@@ -32,12 +33,16 @@ public class updateCustomer extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        Customer cus = (Customer)request.getSession().getAttribute("cus");
+        response.setContentType("text/html;charset=UTF-8");        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            request.getSession().setAttribute("cus", cus);
-            response.sendRedirect("updateCus.jsp");
+            String id= request.getParameter("id");
+            CustomerDAO db = new CustomerDAO();
+            Customer c =new Customer();
+            c = db.getById(id);
+            out.print(c);
+            request.setAttribute("cus", c);
+            request.getRequestDispatcher("Customer/updateCus.jsp").forward(request, response);
         }
     }
 
@@ -67,7 +72,27 @@ public class updateCustomer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("fullname");
+        String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        Date dob = Date.valueOf(request.getParameter("dob"));
+        String phone = request.getParameter("dob");
+        String email = request.getParameter("dob");
+        CustomerDAO db = new CustomerDAO();
+        Customer c = new Customer();
+        c = db.getById(id);
+        c.setName(name);
+        c.setAddress(address);
+        c.setCity(city);
+        c.setState(state);
+        c.setDob(dob);
+        c.setPhone(phone);
+        c.setEmail(email);
+        db.updateCus(c);
+        response.sendRedirect("Login");     
     }
 
     /**

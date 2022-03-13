@@ -66,7 +66,7 @@ public class ordercus extends HttpServlet {
         ArrayList<Order> listor = new ArrayList<>();
         listor = db.getByCus(id);
         request.setAttribute("listor", listor);
-        request.getRequestDispatcher("orderCus.jsp").forward(request, response);
+        request.getRequestDispatcher("Customer/orderCus.jsp").forward(request, response);
     }
 
     /**

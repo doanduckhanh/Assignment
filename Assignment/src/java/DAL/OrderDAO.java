@@ -30,12 +30,12 @@ public class OrderDAO extends BaseDAO<Order>{
            while(rs.next())
            {
                Order or = new Order();
-               or.setOrid(rs.getInt(1));
-               or.setCus(rs.getString(2));
-               or.setBook(rs.getString(3));
-               or.setStart(rs.getDate(4));
-               or.setEnd(rs.getDate(5));       
-               if(rs.getString(6).equals("1")){
+               or.setOrid(rs.getInt(6));
+               or.setCus(rs.getString(1));
+               or.setBook(rs.getString(2));
+               or.setStart(rs.getDate(3));
+               or.setEnd(rs.getDate(4));       
+               if(rs.getString(5).equals("1")){
                    or.setStatus(true);
                } else {
                    or.setStatus(false);
@@ -66,12 +66,16 @@ public class OrderDAO extends BaseDAO<Order>{
            while(rs.next())
            {
                Order or = new Order();
-               or.setOrid(rs.getInt(1));
-               or.setCus(rs.getString(2));
-               or.setBook(rs.getString(3));
-               or.setStart(rs.getDate(4));
-               or.setEnd(rs.getDate(5));       
-               or.setStatus(rs.getBoolean(6));
+               or.setOrid(rs.getInt(6));
+               or.setCus(rs.getString(1));
+               or.setBook(rs.getString(2));
+               or.setStart(rs.getDate(3));
+               or.setEnd(rs.getDate(4));       
+               if(rs.getString(5).equals("1")){
+                   or.setStatus(true);
+               } else {
+                   or.setStatus(false);
+               }
                list.add(or);
            }
         } catch (Exception e) {

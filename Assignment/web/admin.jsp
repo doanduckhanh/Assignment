@@ -172,7 +172,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${list1}" var="x">
+                            <c:forEach items="${listcate}" var="x">
                                 <tr>
                                     <td>${x.ID}</td>
                                     <td>${x.name}</td>

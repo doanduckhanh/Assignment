@@ -57,61 +57,43 @@
               <form action="updateCustomer" method="post">
               <div class="card-body p-md-5 text-black">
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="fullname" value="${cus.name}"/>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${requestScope.cus.cusID}" readonly/>
+                    <label class="form-label" for="form3Example8">ID</label>
+                </div>
+                  
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="fullname" value="${requestScope.cus.name}"/>
                     <label class="form-label" for="form3Example8">Họ và tên</label>
                 </div>
                   
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" value="${cus.address}"/>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" value=""/>
                     <label class="form-label" for="form3Example8">Địa chỉ</label>
                 </div>
-
+                
+                <div class="form-outline mb-4">
                 <select name="calc_shipping_provinces" required="">
                 <option value="">Provinces</option>
                 </select>
                 <select name="calc_shipping_district" required="">
                 <option value="">District</option>
                 </select>
-                <input class="billing_address_1" name="city" type="hidden" value="${cus.city}">
-                <input class="billing_address_2" name="state" type="hidden" value="${cus.state}">
-                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-                  <h6 class="mb-0 me-4">Giới tính </h6>
-                  <br> 
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="gender"
-                      id="femaleGender"
-                      value="1"
-                    />
-                    <label class="form-check-label" for="femaleGender">Nam</label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="gender"
-                      id="maleGender"
-                      value="0"
-                    />
-                    <label class="form-check-label" for="maleGender">Nữ</label>
-                  </div>
+                <input class="billing_address_1" name="city" type="hidden" value="">
+                <input class="billing_address_2" name="state" type="hidden" value="">
                 </div>
-
+                    <br/>
+                
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="dob" value="${cus.dob}"/>
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="dob" value="${requestScope.cus.dob}"/>
                     <label class="form-label" for="form3Example9">Ngày sinh</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example90" class="form-control form-control-lg" name="phone" value="${cus.phone}"/>
+                    <input type="text" id="form3Example90" class="form-control form-control-lg" name="phone" value="${requestScope.cus.phone}"/>
                   <label class="form-label" for="form3Example90">SDT</label>
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example97" class="form-control form-control-lg" name="email" value="${cus.email}"/>
+                    <input type="text" id="form3Example97" class="form-control form-control-lg" name="email" value="${requestScope.cus.email}"/>
                     <label class="form-label" for="form3Example97">Email</label>
                 </div>
                 <div class="d-flex justify-content-end pt-3">

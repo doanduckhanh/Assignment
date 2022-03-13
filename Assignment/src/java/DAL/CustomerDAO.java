@@ -93,31 +93,49 @@ public class CustomerDAO extends BaseDAO<Customer>{
     }
     
     public Customer getById(String id){
-        String sql = "SELECT * FROM Customer WHERE CusID = ?";
+        try {
+            String sql = "SELECT c.CusID,c.Name,c.Address,c.State,c.City,c.Gender,c.Birth,c.Phone,c.Email,c.username,c.password FROM Customer c\n"+"WHERE c.CusID = ?";
+             PreparedStatement statement = connection.prepareStatement(sql);
+             statement.setString(1, id);
+             ResultSet rs = statement.executeQuery();
+             if(rs.next()){
+                 Customer cus = new Customer();
+                 cus.setCusID(rs.getString("CusID"));
+                 cus.setName(rs.getString("Name"));
+                 cus.setAddress(rs.getString("Address"));
+                 cus.setState(rs.getString("State"));
+                 cus.setCity(rs.getString("City"));
+                 cus.setGender(rs.getBoolean("Gender"));
+                 cus.setDob(rs.getDate("Birth"));
+                 cus.setPhone(rs.getString("Phone"));
+                 cus.setEmail(rs.getString("Email"));
+                 cus.setAddress("address");
+                 cus.setUsername(rs.getString("username"));
+                 cus.setPassword(rs.getString("password"));
+                 return cus;
+             }
+        } catch (SQLException e) {
+             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+         return null;
+    }
+    public  void updateCus(Customer c){
+        String sql = "UPDATE [Customer]\n"
+                +"SET [Name] = ?, [Address] = ?, [State] = ?, [City] = ?, [Birth] = ?, [Phone] = ? , [Email] = ?\n "
+                +"WHERE CusID = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, id);
-            ResultSet rs = statement.executeQuery();
-            Customer c = new Customer();
-            c.setCusID(rs.getString(1));
-            c.setName(rs.getString(2));
-            c.setAddress(rs.getString(3));
-            c.setState(rs.getString(4));
-            c.setCity(rs.getString(5));
-            if(rs.getString(6).equals("1")){
-                c.setGender(true);
-            } else {
-                c.setGender(false);
-            }
-            c.setDob(rs.getDate(7));
-            c.setPhone(rs.getString(8));
-            c.setEmail(rs.getString(9));
-            c.setUsername(rs.getString(10));
-            c.setPassword(rs.getString(11));
-            return c;
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            statement.setString(1, c.getName());
+            statement.setString(2, c.getAddress());
+            statement.setString(3, c.getState());
+            statement.setString(4, c.getCity());
+            statement.setDate(5, c.getDob());
+            statement.setString(6, c.getPhone());
+            statement.setString(7, c.getEmail());
+            statement.setString(8, c.getCusID());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        return null;
     }
 }

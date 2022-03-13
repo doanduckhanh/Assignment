@@ -23,7 +23,7 @@ public class CategoriesDAO extends BaseDAO<Category>{
     public ArrayList<Category> getAll(){
         ArrayList<Category> categories = new ArrayList<>();
         try {
-            String sql = "select * from Categories";
+            String sql = "select * from [Categories]";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while(rs.next())
@@ -37,9 +37,6 @@ public class CategoriesDAO extends BaseDAO<Category>{
             Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categories;
-    }
-    public ArrayList<Book> getBooksByCategories(String Cate){
-        return null;    
     }
     public void deleteCategory(int id) {
        try {
