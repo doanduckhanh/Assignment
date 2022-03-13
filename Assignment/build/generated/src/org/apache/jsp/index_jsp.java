@@ -77,9 +77,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li class=\"nav-item\">\n");
       out.write("                            <a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a>\n");
       out.write("                        </li>\n");
-      out.write("                        <li class=\"nav-item\">\n");
-      out.write("                            <a class=\"nav-link active\" aria-current=\"page\" href=\"Login\">Login</a>\n");
-      out.write("                        </li>\n");
+      out.write("                        \n");
       out.write("                        <li class=\"nav-item dropdown active\">\n");
       out.write("                            <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Categories</a>\n");
       out.write("                            <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n");
@@ -88,6 +86,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <li><hr class=\"dropdown-divider\"></li>\n");
       out.write("                                <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n");
       out.write("                            </ul>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link active\" aria-current=\"page\" href=\"Login\">Login</a>\n");
       out.write("                        </li>\n");
       out.write("                    </ul>                  \n");
       out.write("                </div>\n");

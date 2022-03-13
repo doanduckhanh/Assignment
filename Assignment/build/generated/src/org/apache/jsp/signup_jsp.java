@@ -74,14 +74,14 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n");
       out.write("                    <ul class=\"navbar-nav ms-auto mb-2 mb-lg-0\">\n");
       out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Trang chủ</a></li>\n");
-      out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"login.html\">Đăng nhập</a></li>\n");
+      out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"login.jsp\">Đăng nhập</a></li>\n");
       out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </nav>\n");
       out.write("    <!-- Signup Form -->\n");
       out.write("    <section class=\"h-100 bg-dark\">\n");
-      out.write("  <div class=\"container py-5 h-100\">\n");
+      out.write("    <div class=\"container py-5 h-100\">\n");
       out.write("    <div class=\"row d-flex justify-content-center align-items-center h-100\">\n");
       out.write("      <div class=\"col\">\n");
       out.write("        <div class=\"card card-registration my-4\">\n");
@@ -183,7 +183,7 @@ public final class signup_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("      </div>\n");
       out.write("    </div>\n");
-      out.write("  </div>\n");
+      out.write("    </div>\n");
       out.write("</section>\n");
       out.write("\n");
       out.write("<script>//<![CDATA[\n");
