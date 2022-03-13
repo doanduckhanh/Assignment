@@ -6,6 +6,7 @@
 package DAL;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,4 +92,22 @@ public class OrderDAO extends BaseDAO<Order>{
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
+    public  void addOrder(String bid, String cid){
+        long millis=System.currentTimeMillis();
+        long millis2 = millis + 3*24*60*60*1000;
+        Date d = new Date(millis);
+        Date d2 = new Date(millis2);
+        try {
+           String sql = "INSERT INTO [Order](CusID,BookID,StartDate,EndDate,status) VALUES (?,?,?,?,?)";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setString(1, cid);
+           statement.setInt(2, Integer.parseInt(bid));
+           statement.setDate(3, d);
+           statement.setDate(4, d2);
+           statement.setInt(5, 0);
+           statement.executeUpdate();
+       } catch (SQLException ex) {
+           Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
 }

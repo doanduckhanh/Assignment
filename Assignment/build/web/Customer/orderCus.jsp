@@ -1,6 +1,6 @@
 <%-- 
-    Document   : user
-    Created on : Mar 5, 2022, 8:09:25 PM
+    Document   : orderCus
+    Created on : Mar 13, 2022, 10:26:23 AM
     Author     : khanh doan
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Library Management</title>
+        <title>Order Customer</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -21,7 +21,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
     <body>
-        <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
                 <a href="#" class="navbar-brand has-logo">
@@ -32,7 +31,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">                 
-                        <li class="nav-item"><a class="nav-link active" href="updateCustomer">${requestScope.cus.name}</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="updateCustomer?id=${cus.cusID}">${requestScope.cus.name}</a></li>
                         <li class="nav-item"><a class="nav-link active" href="ordercus?id=${requestScope.cus.cusID}">Your Order</a></li>  
                         <li class="nav-item"><a class="nav-link active" href="index.jsp">Logout</a></li>                      
                     </ul>
@@ -57,53 +56,40 @@
                 </div>
             </form>
         </div>
-        
-            <div class="row">
-                <div class="col-2" style="margin-left: 10px; text-align: center">
-                    <h3>Categories</h3>
-                    <ul class="list-group">
-                        <c:forEach items="${listcate}" var="x">
-                            <li class="list-group-item"><a href="searchCate?id=${x.ID}" class="list-group-item list-group-item-action">${x.name}</a></li>
-                        </c:forEach>                      
-                    </ul>
-                </div>
-                <div class="col-9">
-                    <h3>Book</h3>
+        <!-- List Order -->
+        <div class="container">
+            <h3>Your Order</h3>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Order ID</th>
+                                <th>Customer ID</th>
                                 <th>Book ID</th>
-                                <th>Book Name</th>
-                                <th>Author</th>
-                                <th>Category</th>
-                                <th>Number of Book</th>
-                                <th>Entry Date</th>
-                                <th>Price</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listbook}" var="b">
+                            <c:forEach items="${listor}" var="x">
                                 <tr>
-                                    <td>${b.ID}</td>
-                                    <td>${b.name}</td>
-                                    <td>${b.author}</td>
-                                    <td>${b.category.name}</td>
-                                    <td>${b.number}</td>
-                                    <td>${b.entryDate}</td>
-                                    <td>${b.price}</td>
+                                    <td>${x.orid}</td>
+                                    <td>${x.cus}</td>
+                                    <td>${x.book}</td>
+                                    <td>${x.start}</td>
+                                    <td>${x.end}</td>
                                     <td>
-                                        <button class="btn btn-primary"><a href="takeBook?id=${b.ID}&cid=${cus.cusID}" style="color: white">Take Book</a></button>
+                                        <c:if test="${x.status==true}">
+                                            <h4 style="color: green">Done</h4>
+                                        </c:if>
+                                        <c:if test="${x.status==false}">
+                                            <h4 style="color: red">No</h4>
+                                        </c:if>
                                     </td>
-                                </tr>
+                                </tr>                               
                             </c:forEach>
                         </tbody>
                     </table>
-                    
-                    </div>
-                </div>
-            </div>
-        
+        </div>
     </body>
 </html>
-
-

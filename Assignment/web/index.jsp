@@ -64,7 +64,7 @@
         </div>
         <!-- Search Box -->
         <div id="search-box" class="s130">
-            <form>
+            <form action="Login" method="get">
                 <div class="inner-form">
                     <div class="input-field first-wrap">
                         <div class="svg-wrapper">
@@ -85,7 +85,7 @@
             <!-- Content Row-->
             <div id="categories" class="row gx-4 gx-lg-5">
                 <div class="col-md-8 mb-5">
-                    <h2>New Books</h2>                   
+                    <a href="Login">New Book</a>                
                 </div>
             </div>
         </div>

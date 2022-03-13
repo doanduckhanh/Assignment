@@ -12,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import DAL.OrderDAO;
+import model.Order;
+import java.util.ArrayList;
 /**
  *
  * @author khanh doan
@@ -59,7 +61,12 @@ public class ordercus extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+        String id = request.getParameter("id");
+        OrderDAO db = new OrderDAO();
+        ArrayList<Order> listor = new ArrayList<>();
+        listor = db.getByCus(id);
+        request.setAttribute("listor", listor);
+        request.getRequestDispatcher("orderCus.jsp").forward(request, response);
     }
 
     /**
