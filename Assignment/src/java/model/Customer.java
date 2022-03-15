@@ -23,11 +23,12 @@ public class Customer {
     private String phone;
     private String CusID;
     private String email;
+    private String role;
 
     public Customer() {
     }
 
-    public Customer(String username, String password, String name, String address, String city, String state, boolean gender, Date dob, String phone, String CusID, String email) {
+    public Customer(String username, String password, String name, String address, String city, String state, boolean gender, Date dob, String phone, String CusID, String email, String role) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -39,6 +40,7 @@ public class Customer {
         this.phone = phone;
         this.CusID = CusID;
         this.email = email;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -128,4 +130,14 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
+    
 }

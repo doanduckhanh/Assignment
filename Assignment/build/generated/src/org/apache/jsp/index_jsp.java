@@ -107,7 +107,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("        <!-- Search Box -->\n");
       out.write("        <div id=\"search-box\" class=\"s130\">\n");
-      out.write("            <form>\n");
+      out.write("            <form action=\"Login\" method=\"get\">\n");
       out.write("                <div class=\"inner-form\">\n");
       out.write("                    <div class=\"input-field first-wrap\">\n");
       out.write("                        <div class=\"svg-wrapper\">\n");
@@ -128,7 +128,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <!-- Content Row-->\n");
       out.write("            <div id=\"categories\" class=\"row gx-4 gx-lg-5\">\n");
       out.write("                <div class=\"col-md-8 mb-5\">\n");
-      out.write("                    <h2>New Books</h2>                   \n");
+      out.write("                    <a href=\"Login\">New Book</a>                \n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");

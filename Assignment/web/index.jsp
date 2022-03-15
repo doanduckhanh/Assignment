@@ -45,7 +45,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Login">Login</a>
+                            <a class="nav-link active" aria-current="page" href="login.jsp">Login</a>
                         </li>
                     </ul>                  
                 </div>
@@ -64,7 +64,7 @@
         </div>
         <!-- Search Box -->
         <div id="search-box" class="s130">
-            <form action="Login" method="get">
+            <form>
                 <div class="inner-form">
                     <div class="input-field first-wrap">
                         <div class="svg-wrapper">

@@ -104,6 +104,7 @@ public class signup extends HttpServlet {
         } else {
             c.setGender(false);
         }
+        c.setRole("user");
         db.insertCus(c);
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }

@@ -102,11 +102,6 @@ public class Login extends HttpServlet {
        String username = request.getParameter("username");
        String password = request.getParameter("password");
        String role = request.getParameter("role");
-       if(role.equalsIgnoreCase("admin")){
-           if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
-               response.sendRedirect("admin");
-           }
-       } else {
        CustomerDAO db = new CustomerDAO();
        Customer cus = new Customer();
         try {
@@ -150,7 +145,6 @@ public class Login extends HttpServlet {
        {   
            request.setAttribute("err", 1);
            request.getRequestDispatcher("login.jsp").forward(request, response);
-       }
        }
     }
 

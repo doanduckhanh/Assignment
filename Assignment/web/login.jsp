@@ -84,6 +84,7 @@
                                         <select name="role" id="role"> 
                                             <option value="user">User</option>
                                             <option value="admin">Admin</option>
+                                            <option value="mod">Moderator</option>
                                         </select>
                                     </div>
 					<div class="form-group">

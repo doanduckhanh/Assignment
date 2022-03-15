@@ -143,6 +143,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                        <select name=\"role\" id=\"role\"> \n");
       out.write("                                            <option value=\"user\">User</option>\n");
       out.write("                                            <option value=\"admin\">Admin</option>\n");
+      out.write("                                            <option value=\"mod\">Moderator</option>\n");
       out.write("                                        </select>\n");
       out.write("                                    </div>\n");
       out.write("\t\t\t\t\t<div class=\"form-group\">\n");
