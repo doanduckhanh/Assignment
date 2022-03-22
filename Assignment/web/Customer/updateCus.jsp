@@ -55,12 +55,17 @@
               <!-- Form -->
             <div class="col-xl-6">
               <form action="updateCustomer" method="post">
-              <div class="card-body p-md-5 text-black">
+              <div class="card-body p-md-5 text-black">                 
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="password" value="${requestScope.cus.password}"/>
+                    <label class="form-label" for="form3Example8">Password</label>
+                </div>  
+                
                 <div class="form-outline mb-4">
                     <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${requestScope.cus.cusID}" readonly/>
-                    <label class="form-label" for="form3Example8">ID</label>
+                    <label class="form-label" for="form3Example8">Họ và tên</label>
                 </div>
-                  
+                    
                 <div class="form-outline mb-4">
                     <input type="text" id="form3Example8" class="form-control form-control-lg" name="fullname" value="${requestScope.cus.name}"/>
                     <label class="form-label" for="form3Example8">Họ và tên</label>
@@ -96,6 +101,7 @@
                     <input type="text" id="form3Example97" class="form-control form-control-lg" name="email" value="${requestScope.cus.email}"/>
                     <label class="form-label" for="form3Example97">Email</label>
                 </div>
+                
                 <div class="d-flex justify-content-end pt-3">
                   <button type="submit" class="btn btn-warning btn-lg ms-2">Submit</button>
                 </div>

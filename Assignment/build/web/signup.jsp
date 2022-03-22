@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="dob"/>
+                    <input type="date" id="form3Example9" class="form-control form-control-lg" name="dob"/>
                     <label class="form-label" for="form3Example9">Ngày sinh</label>
                 </div>
 

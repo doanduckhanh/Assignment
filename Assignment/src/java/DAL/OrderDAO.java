@@ -48,7 +48,7 @@ public class OrderDAO extends BaseDAO<Order>{
         return list;
     }
     
-    public List<Order> getListByPage(List<Order> list, int start, int end) {
+    public ArrayList<Order> getListByPage(List<Order> list, int start, int end) {
         ArrayList<Order> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
             arr.add(list.get(i));
@@ -61,8 +61,8 @@ public class OrderDAO extends BaseDAO<Order>{
         String sql = "SELECT o.CusID,o.BookID,o.StartDate,o.EndDate,o.status FROM [Order] o WHERE o.CusID = ?";
         try {
            PreparedStatement statement = connection.prepareStatement(sql);
-           ResultSet rs = statement.executeQuery();
            statement.setString(1, cusid);
+           ResultSet rs = statement.executeQuery();         
            while(rs.next())
            {
                Order or = new Order();
@@ -83,14 +83,52 @@ public class OrderDAO extends BaseDAO<Order>{
         }
         return list;
     }
-    public void updateOrder(int id, boolean status) {
+    public Order takeOrder(int id){
+        String sql = "SELECT * FROM [Order] WHERE OrID = ?\n";
+        try {
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setInt(1, id);
+           ResultSet rs = statement.executeQuery();         
+           if(rs.next())
+           {
+               Order or = new Order();
+               or.setCus(rs.getString("CusID"));
+               or.setBook(rs.getString("BookID"));
+               or.setStart(rs.getDate("StartDate"));
+               or.setEnd(rs.getDate("EndDate"));      
+               or.setOrid(rs.getInt(6));
+               if(rs.getInt("status")==1){
+                   or.setStatus(true);
+               } else {
+                   or.setStatus(false);
+               }
+               return or;
+           }
+        } catch (SQLException e) {
+                Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+    public void updateOrder(Order o) {
        try {
            String sql = "UPDATE [Order]\n"
-                   + "   SET [status] = ?\n"
+                   + "   SET [CusID] = ?\n"
+                   + "      ,[BookID] = ?\n"
+                   + "      ,[StartDate] = ?\n"
+                   + "      ,[EndDate] = ?\n"
+                   + "      ,[status] = ?\n"
                    + " WHERE [OrID] = ?";
            PreparedStatement statement = connection.prepareStatement(sql);
-           statement.setBoolean(1, status);
-           statement.setInt(2, id);
+           statement.setString(1, o.getCus());
+           statement.setInt(2, Integer.parseInt(o.getBook()));
+           statement.setDate(3, o.getStart());
+           statement.setDate(4, o.getEnd());
+           if(o.isStatus()==true){
+               statement.setInt(5, 1);
+           } else {
+               statement.setInt(5, 0);
+           }
+           statement.setInt(6, o.getOrid());
            statement.executeUpdate();
        } catch (SQLException ex) {
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,6 +147,17 @@ public class OrderDAO extends BaseDAO<Order>{
            statement.setDate(3, d);
            statement.setDate(4, d2);
            statement.setInt(5, 0);
+           statement.executeUpdate();
+       } catch (SQLException ex) {
+           Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
+    
+    public void deleteOrder(int id) {
+       try {
+           String sql = "DELETE FROM [Order] WHERE OrID=?";
+           PreparedStatement statement = connection.prepareStatement(sql);
+           statement.setInt(1, id);
            statement.executeUpdate();
        } catch (SQLException ex) {
            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);

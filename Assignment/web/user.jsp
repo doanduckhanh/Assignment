@@ -32,8 +32,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">                 
-                        <li class="nav-item"><a class="nav-link active" href="updateCustomer?id=${requestScope.cus.cusID}">${requestScope.cus.name}</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="ordercus?id=${requestScope.cus.cusID}">Your Order</a></li>  
+                        <li class="nav-item"><a class="nav-link active" href="updateCustomer?id=${sessionScope.cus.cusID}">${sessionScope.cus.name}</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="ordercus?id=${sessionScope.cus.cusID}">Your Order</a></li>  
                         <li class="nav-item"><a class="nav-link active" href="index.jsp">Logout</a></li>                      
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="col-2" style="margin-left: 10px; text-align: center">
                     <h3>Categories</h3>
                     <ul class="list-group">
-                        <c:forEach items="${listcate}" var="x">
+                        <c:forEach items="${sessionScope.listcate}" var="x">
                             <li class="list-group-item"><a href="searchCate?id=${x.ID}" class="list-group-item list-group-item-action">${x.name}</a></li>
                         </c:forEach>                      
                     </ul>

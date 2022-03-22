@@ -71,7 +71,7 @@ public class searchCate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        // processRequest(request, response);
-       HttpSession session = request.getSession(); 
+       /*HttpSession session = request.getSession(); 
        Cookie[] cookies = request.getCookies();
        String username = null;
        String password = null;
@@ -86,11 +86,12 @@ public class searchCate extends HttpServlet {
        Customer cus = new Customer();
        CustomerDAO dbcus = new CustomerDAO();
         try {
-            cus = dbcus.getCusByUsernameAndPassword(username, password);
+            cus = dbcus.getCusByUsernameAndPassword(username, password,"user");
         } catch (SQLException ex) {
             Logger.getLogger(searchCate.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("cus", cus);
+       */
        String id = request.getParameter("id");
        BookDAO db = new BookDAO();
        ArrayList<Book> listb = new ArrayList<>();     
@@ -108,7 +109,7 @@ public class searchCate extends HttpServlet {
         startb = (pageb - 1) * numperpageb;
         endb = Math.min(pageb * numperpageb, sizeb);
         List<Book> listbook = db.getListByPage(listb, startb, endb);
-        request.setAttribute("listbook", listb);
+        request.getSession().setAttribute("listbook", listb);
         request.setAttribute("numb", numb);
        
         CategoriesDAO db1 = new CategoriesDAO();

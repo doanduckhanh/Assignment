@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="model.Order" %>
+<%@page import="DAL.OrderDAO" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +23,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -54,6 +56,7 @@
                 <li class="active"><a data-toggle="pill" href="#order">Order</a></li>
                 <li><a data-toggle="pill" href="#book">Book</a></li>
                 <li><a data-toggle="pill" href="#categories">Categories</a></li>
+                <li><a data-toggle="pill" href="#mod">Moderator</a></li>
             </ul>
   
             <div class="tab-content">
@@ -72,7 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listor}" var="x">
+                            <c:forEach items="${listorder}" var="x">
                                 <tr>
                                     <td>${x.orid}</td>
                                     <td>${x.cus}</td>
@@ -88,19 +91,22 @@
                                         </c:if>
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary"><a href="updateOrder?id=${x.orid}&status=${x.status}">Update</a></button>
+                                        <button class="btn btn-primary"><a href="updateOrder?id=${x.orid}">Update</a></button>
+                                        <button class="btn btn-primary"><a href="deleteOrder?id=${x.orid}">Delete</a></button>
                                     </td>
                                 </tr>                               
                             </c:forEach>
                         </tbody>
                     </table>
-                    <div class="pagination">
-                        <a href="admin?pageor=${1}" style="color: black">First</a>
+                    <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a href="admin?pageor=${1}" style="color: black">First</a></li>
                         <c:forEach begin="${1}" end="${requestScope.numor}" var="i">
-                            <a href="admin?pageor=${i}" style="color: black">${i}</a>
+                        <li class="page-item"><a href="admin?pageor=${i}" style="color: black">${i}</a></li>
                         </c:forEach>
-                        <a href="admin?pageor=${requestScope.numor}" style="color: black">Last</a>
-                    </div>
+                        <li class="page-item"><a href="admin?pageor=${requestScope.numor}" style="color: black">Last</a></li>
+                    </ul>
+                    </nav>
                 </div>
                 <!-- Book Content -->
                 <div id="book" class="tab-pane fade">
@@ -163,8 +169,7 @@
                         <thead>
                             <tr>
                                 <th>Category ID</th>
-                                <th>Category Name</th>
-                                <th>Number of Book</th>                                
+                                <th>Category Name</th>                               
                             </tr>
                         </thead>
                         <tbody>
@@ -172,38 +177,70 @@
                                 <tr>
                                     <td>${x.ID}</td>
                                     <td>${x.name}</td>
-                                    <td>${x.numB}</td>
-                                    <td>
-                                        <button class="btn btn-primary" onclick="openForm1()">Update Category</button>
-                                        <div class="form-popup" id="myForm1">
-                                            <h1>Update Category</h1>
-                                            <form action="updateCate" method="post" class="form-container">           
-                                                <input type="text" id="form3Example8" class="form-control form-control-lg" name="cateid" value="${x.ID}" readonly/>
-                                                <label class="form-label" for="form3Example8">Category Name</label>  
-                                                <input type="text" id="form3Example8" class="form-control form-control-lg" name="catename"/>
-                                                <label class="form-label" for="form3Example8">Category Name</label>  
-                                                <button type="submit" class="btn">Update</button>
-                                                <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
-                                            </form>
-                                        </div>
-                                        <button class="btn btn-primary"><a href="#" onclick="showMess(${x.ID})">Delete Category</a></button>
+                                    <td>                                     
+                                        <button class="btn btn-primary" onclick="showMess(${x.ID})">Delete Category</button>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-                    <div class="pagination">
-                        <a href="admin?pagecate=${1}" style="color: black">First</a>
-                        <c:forEach begin="${1}" end="${requestScope.numcate}" var="i">
-                            <a href="admin?pagecate=${i}" style="color: black">${i}</a>
-                        </c:forEach>
-                        <a href="admin?pagecate=${requestScope.numcate}" style="color: black">Last</a>
-                    </div>
                 </div>
+                 <!-- Moderator Content -->
+                    <div id="mod" class="tab-pane fade">
+                    <h3>Moderator</h3>
+                    <button class="btn btn-primary"><a href="addMod">Add Moderator</a></button>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Moderator ID</th>
+                                <th>Moderator Name</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Gender</th>
+                                <th>Dob</th>
+                                <th>Phone</th>
+                                <th>Email</th>                                   
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${requestScope.listmod}" var="x">
+                                <tr>
+                                    <td>${x.cusID}</td>
+                                    <td>${x.name}</td>
+                                    <td>${x.address}</td>
+                                    <td>${x.state}</td>
+                                    <td>${x.city}</td>
+                                    <td>
+                                        <c:if test="${x.gender==true}">
+                                            <h4>Male</h4>
+                                        </c:if>
+                                        <c:if test="${x.gender==false}">
+                                            <h4>Female</h4>
+                                        </c:if>
+                                    </td>
+                                    <td>${x.dob}</td>
+                                    <td>${x.phone}</td>
+                                    <td>${x.email}</td>
+                                    <td>
+                                        <button class="btn btn-primary"><a href="#">Update</a></button>
+                                    </td>
+                                </tr>                               
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <a href="admin?pageor=${1}" style="color: black">First</a>
+                        <c:forEach begin="${1}" end="${requestScope.numor}" var="i">
+                            <a href="admin?pageor=${i}" style="color: black">${i}</a>
+                        </c:forEach>
+                        <a href="admin?pageor=${requestScope.numor}" style="color: black">Last</a>
+                    </div>
+                </div>    
             </div>
         </div>
       
-
+      
         
         <script>
             function showMess(id){

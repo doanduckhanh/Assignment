@@ -1,16 +1,16 @@
 <%-- 
-    Document   : addBook
-    Created on : Mar 10, 2022, 9:42:37 AM
+    Document   : updateOrder
+    Created on : Mar 22, 2022, 3:07:31 PM
     Author     : khanh doan
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add book</title>
+        <title>JSP Page</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -45,50 +45,52 @@
                 </form>
             </div>
         </nav>
-        <!-- Form add book -->
+        
         <div class="container" style="margin-top: 10px">
-            <form action="addBook" method="post">             
+            <form action="updateOrder" method="post">
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example8">Book ID</label>
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id"/>                    
+                    <label class="form-label" for="form3Example8">Order ID</label>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="id" value="${order.orid}" readonly/>                    
                 </div>
                 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example8">Book Name</label>
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="name"/>                   
+                    <label class="form-label" for="form3Example8">Customer ID</label>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="cus" value="${order.cus}" readonly/>                    
                 </div>
-                  
+                
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example8">Category :</label>
+                    <label class="form-label" for="form3Example8">Book ID</label>
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="book" value="${order.book}" readonly/>                    
+                </div>
+                
+                
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Start Date</label>
+                    <input type="date" id="form3Example8" class="form-control form-control-lg" name="start" value="${order.start}" readonly/>                    
+                </div>
+                
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">End Date</label>
+                    <input type="date" id="form3Example8" class="form-control form-control-lg" name="end" value="${order.end}"/>                    
+                </div>
+                
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Status :</label>
                     <br/>
-                    <c:forEach items="${listcate}" var="x">
-                        <input type="radio" name="category" value="${x.ID}"/>${x.name}
-                    </c:forEach>
+                        <c:choose>        
+                            <c:when test = "${order.status==true}">
+                               <input type="radio" name="status" value="1" checked/>Done
+                               <input type="radio" name="status" value="0"/>No
+                            </c:when>       
+                            <c:when test = "${order.status==false}">
+                                <input type="radio" name="status" value="1"/>Done
+                                <input type="radio" name="status" value="0" checked/>No                             
+                            </c:when>
+                        </c:choose>
                 </div>
-                  
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example8">Number of Book</label>
-                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="number"/>
-                </div>
-
-
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example9">Entry Date</label>
-                    <input type="date" id="form3Example9" class="form-control form-control-lg" name="entrydate"/>
-                </div>
-
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example90">Price</label>
-                    <input type="text" id="form3Example90" class="form-control form-control-lg" name="price"/>                 
-                </div>
-
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example99">Author</label>
-                    <input type="text" id="form3Example99" class="form-control form-control-lg" name="author"/>
-                </div>
-                 <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-               
+                            
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </body>
 </html>

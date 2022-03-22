@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        Cookie[] cookies = request.getCookies();
+        /*Cookie[] cookies = request.getCookies();
         if(cookies!=null)
         {
             for (Cookie cooky : cookies) {
@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
                    request.setAttribute("password", cooky.getValue());
                }     
             }
-        }    
+        }    */
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
@@ -99,17 +99,8 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-       String username = request.getParameter("username");
-       String password = request.getParameter("password");
-       String role = request.getParameter("role");
-       CustomerDAO db = new CustomerDAO();
-       Customer cus = new Customer();
-        try {
-            cus = db.getCusByUsernameAndPassword(username, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       if(cus != null) // login successfully!
+       
+       /*if(cus != null) // login successfully!
        {
            String remember = request.getParameter("remember");
            if(remember !=null)
@@ -122,31 +113,23 @@ public class Login extends HttpServlet {
                response.addCookie(c_user);
                HttpSession session = request.getSession();
                session.setAttribute("user", cus);
-           }         
-           request.setAttribute("cus", cus);
+           }         */
+           Customer cus = (Customer)request.getAttribute("cus");
+           HttpSession session = request.getSession();
+           session.setAttribute("cus", cus);
            CategoriesDAO db1 = new CategoriesDAO();
            ArrayList<Category> listcate = new ArrayList<>();
            listcate = db1.getAll();
-           request.setAttribute("listcate", listcate);
+           session.setAttribute("listcate", listcate);
            
            BookDAO db2 = new BookDAO();
            ArrayList<Book> listbook = new ArrayList<>();
            listbook = db2.getAll();
-           request.setAttribute("listbook", listbook);
-           
-           OrderDAO db3 = new OrderDAO();
-           ArrayList<Order> listorder = new ArrayList<>();
-           listorder = db3.getByCus(cus.getCusID());
-           request.setAttribute("listordercus", listorder);
+           session.setAttribute("listbook", listbook);
                 
            request.getRequestDispatcher("user.jsp").forward(request, response);
        }
-       else //login fail
-       {   
-           request.setAttribute("err", 1);
-           request.getRequestDispatcher("login.jsp").forward(request, response);
-       }
-    }
+    
 
     /**
      * Returns a short description of the servlet.

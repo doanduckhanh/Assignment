@@ -5,10 +5,15 @@
  */
 package Filter;
 
+import DAL.CustomerDAO;
+import controller.Login;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,6 +21,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Customer;
 
 /**
  *
@@ -98,7 +105,18 @@ public class CheckRole implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         String role = request.getParameter("role");
+        CustomerDAO db = new CustomerDAO();
+        Customer cus = new Customer();
+        try {
+            cus = db.getCusByUsernameAndPassword(username, password, role);
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(cus!=null){
+        request.setAttribute("cus", cus);
         if(role.equalsIgnoreCase("admin")){
             RequestDispatcher rd = request.getRequestDispatcher("admin");
             rd.include(request, response);
@@ -107,6 +125,11 @@ public class CheckRole implements Filter {
             rd.include(request, response);
         } else {
             chain.doFilter(request, response);
+        }
+        } else {
+            request.setAttribute("err", 1);
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.include(request, response);
         }
     }
 

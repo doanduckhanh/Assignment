@@ -79,8 +79,9 @@ public class updateCustomer extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         Date dob = Date.valueOf(request.getParameter("dob"));
-        String phone = request.getParameter("dob");
-        String email = request.getParameter("dob");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         CustomerDAO db = new CustomerDAO();
         Customer c = new Customer();
         c = db.getById(id);
@@ -91,8 +92,9 @@ public class updateCustomer extends HttpServlet {
         c.setDob(dob);
         c.setPhone(phone);
         c.setEmail(email);
+        c.setPassword(password);
         db.updateCus(c);
-        response.sendRedirect("Login");     
+        response.sendRedirect("user.jsp");     
     }
 
     /**

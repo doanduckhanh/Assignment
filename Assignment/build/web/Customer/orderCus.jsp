@@ -71,7 +71,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${requestScope.listor}" var="x" varStatus="loop">
+                            <c:forEach items="${listor}" var="x">
                                 <tr>
                                     <td>${x.orid}</td>
                                     <td>${x.cus}</td>

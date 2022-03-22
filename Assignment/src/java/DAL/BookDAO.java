@@ -53,7 +53,7 @@ public class BookDAO extends BaseDAO<Book>{
     
     public void deleteBook(int id) {
        try {
-           String sql = "DELETE FROM Categories WHERE CateID=?";
+           String sql = "DELETE FROM [Book] WHERE ID=?";
            PreparedStatement statement = connection.prepareStatement(sql);
            statement.setInt(1, id);
            statement.executeUpdate();

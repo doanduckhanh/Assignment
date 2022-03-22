@@ -77,8 +77,8 @@ public class Order {
 
     public void setCus(String cus) {
         this.cus = cus;
-    }
-
+    } 
+    
     
     @Override
     public String toString() {

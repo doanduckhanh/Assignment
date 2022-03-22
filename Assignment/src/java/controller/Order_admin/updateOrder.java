@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAL.OrderDAO;
+import java.sql.Date;
 import model.Order;
 /**
  *
@@ -61,14 +62,12 @@ public class updateOrder extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String id = request.getParameter("id");
-        String status = request.getParameter("status");
         OrderDAO db = new OrderDAO();
-        if(status.equals("true")){
-            db.updateOrder(Integer.parseInt(id), false);
-        } else {
-            db.updateOrder(Integer.parseInt(id), true);
-        }
-        request.getRequestDispatcher("admin").forward(request, response);
+        Order o =new Order();
+        o=db.takeOrder(Integer.parseInt(id));
+        
+        request.setAttribute("order", o);
+        request.getRequestDispatcher("updateOrder.jsp").forward(request, response);
     }
 
     /**
@@ -82,7 +81,28 @@ public class updateOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String id = request.getParameter("id");
+        String cus = request.getParameter("cus");
+        String book = request.getParameter("book");
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
+        String status = request.getParameter("status");
+        
+        Order o = new Order();
+        OrderDAO db = new OrderDAO();
+        o.setOrid(Integer.parseInt(id));
+        o.setCus(cus);
+        o.setBook(book);
+        o.setStart(Date.valueOf(start));
+        o.setEnd(Date.valueOf(end));
+        if(status.equalsIgnoreCase("1")){
+            o.setStatus(true);
+        } else {
+            o.setStatus(false);
+        }
+        db.updateOrder(o);
+        response.sendRedirect("admin");
     }
 
     /**

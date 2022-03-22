@@ -74,7 +74,7 @@
 
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example9">Entry Date</label>
-                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="entrydate"/>
+                    <input type="date" id="form3Example9" class="form-control form-control-lg" name="entrydate"/>
                 </div>
 
                 <div class="form-outline mb-4">
