@@ -92,7 +92,7 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-primary"><a href="updateOrder?id=${x.orid}">Update</a></button>
-                                        <button class="btn btn-primary"><a href="deleteOrder?id=${x.orid}">Delete</a></button>
+                                        <button class="btn btn-primary"><a href="#" onclick="showMess2(${x.orid})">Delete</a></button>
                                     </td>
                                 </tr>                               
                             </c:forEach>

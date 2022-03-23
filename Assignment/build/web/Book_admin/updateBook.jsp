@@ -61,16 +61,11 @@
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example8">Category :</label>
                     <br/>
+                    <select name="category">
                     <c:forEach items="${listcate}" var="x">
-                        <c:choose>        
-                            <c:when test = "${x.ID==book.category.ID}">
-                               <input type="radio" name="category" value="${x.ID}" checked/>${x.name}
-                            </c:when>       
-                            <c:when test = "${x.ID!=book.category.ID}">
-                               <input type="radio" name="category" value="${x.ID}"/>${x.name}
-                            </c:when>
-                        </c:choose>
+                        <option value="${x.ID}">${x.name}</option>
                     </c:forEach>
+                    </select>
                 </div>
                   
                 <div class="form-outline mb-4">
